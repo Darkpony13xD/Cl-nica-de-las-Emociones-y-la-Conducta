@@ -1,15 +1,15 @@
-import AnimatedBackground from "./Components/AnimatedBackground";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
-import Hero from "./Components/Hero";
-import Servicios from "./Components/Servicios";
+import AnimatedBackground from "./components/AnimatedBackground";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import Servicios from "./components/Servicios";
 
-import Enfoque from "./Components/sections/Enfoque";
-import SobreNegocio from "./Components/sections/SobreNegocio";
-import ContactSection from "./Components/sections/ContactSection";
+import Enfoque from "./components/sections/Enfoque";
+import SobreNegocio from "./components/sections/SobreNegocio";
+import ContactSection from "./components/sections/ContactSection";
 
-import ScrollProgress from "./UI/ScrollProgress";
-import FloatingContactButton from "./UI/FloatingContactButton";
+import ScrollProgress from "./ui/ScrollProgress";
+import FloatingContactButton from "./ui/FloatingContactButton";
 
 const SHOW_BACKGROUND = true;
 

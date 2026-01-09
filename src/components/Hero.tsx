@@ -1,78 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Heart, Brain, Sparkles, Users } from 'lucide-react';
-
-const Hero: React.FC = () => {
+export default function Hero() {
   return (
-    <section className="relative min-height-screen flex items-center pt-20 overflow-hidden bg-serene min-h-[90vh]">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-accent uppercase bg-purple-50 rounded-full border border-purple-200">
-            Psicoterapia Humanista & Integrativa
-          </span>
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6 text-gray-900 serif">
-            Encuentra tu paz en un espacio de <span className="text-accent italic">escucha profunda.</span>
-          </h1>
-          <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-            Acompañamiento profesional diseñado para redescubrir tu equilibrio emocional y fortalecer tu salud mental con un enfoque cálido y humano.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              className="bg-accent text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 shadow-xl"
-            >
-              Comienza tu proceso <ArrowRight size={20} />
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              className="bg-white text-gray-800 border border-gray-200 px-8 py-4 rounded-full font-semibold"
-            >
-              Conoce mi método
-            </motion.button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="relative w-full aspect-square md:aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1000" 
-              alt="Psychologist session" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-accent/10 mix-blend-multiply"></div>
-          </div>
-          
-          {/* Decorative floating card */}
-          <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-6 -left-6 md:-left-12 glass p-6 rounded-2xl shadow-xl max-w-[200px]"
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-accent">
-                <Heart size={20} />
-              </div>
-              <span className="text-sm font-bold serif">Bienestar Real</span>
-            </div>
-            <p className="text-xs text-gray-500">Sesiones presenciales y online adaptadas a tu ritmo.</p>
-          </motion.div>
-        </motion.div>
+    <section id="inicio" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <h1 className="text-5xl font-bold serif">Clínica de las Emociones y la Conducta</h1>
+        <p className="mt-4 text-gray-600 max-w-2xl">
+          Un espacio seguro y profesional para acompañarte en tu bienestar emocional.
+        </p>
+        <div className="mt-8">
+          <a href="#contacto" className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-semibold">
+            Agendar cita
+          </a>
+        </div>
       </div>
-
-      {/* Abstract Background Shapes */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-purple-200 to-pink-200 blur-[100px] opacity-50"></div>
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-t from-blue-300 to-blue-100 blur-[100px] opacity-60"></div>
     </section>
   );
-};
-
-export default Hero;
+}

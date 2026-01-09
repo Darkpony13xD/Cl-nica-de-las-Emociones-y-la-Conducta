@@ -17,11 +17,8 @@ export default function App() {
   return (
     <div className="selection:bg-accent/20 selection:text-accent">
       <ScrollProgress />
-
       {SHOW_BACKGROUND && <AnimatedBackground />}
-
       <Navbar />
-
       <main>
         <Hero />
         <Enfoque />
@@ -29,9 +26,7 @@ export default function App() {
         <SobreNegocio />
         <ContactSection />
       </main>
-
       <Footer />
-
       <FloatingContactButton />
     </div>
   );

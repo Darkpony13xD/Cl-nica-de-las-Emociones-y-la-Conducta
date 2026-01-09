@@ -1,104 +1,294 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, X } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Calendar, ShieldCheck, Sparkles, Clock, X } from "lucide-react";
+import Modal from "../ui/Modal";
 
-const Servicios: React.FC = () => {
-  const items = [
-    { title: "Terapia Individual", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800", price: "Sesión 50 min", desc: "Sesiones individuales de 50 minutos enfocadas en acompañamiento personalizado. Trabajo con herramientas de psicoterapia humanista e integrativa para apoyar cambios sostenibles." },
-    { title: "Terapia de Pareja", image: "https://images.unsplash.com/photo-1516584566738-4f480e7f4498?auto=format&fit=crop&q=80&w=800", price: "Sesión 80 min", desc: "Acompañamiento para parejas con sesiones más extensas (80 min) centradas en comunicación, resolución de conflictos y reconexión emocional." },
-    { title: "Ansiedad y Estrés", image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800", price: "Especialidad", desc: "Intervenciones basadas en evidencia para gestión de ansiedad y estrés: técnicas de regulación emocional, psicoeducación y herramientas prácticas para la vida diaria." },
-  ];
+type Servicio = {
+  id: string;
+  title: string;
+  tag: string;
+  desc: string;
+  bullets: string[];
+  image: string;
+};
 
-  const [selected, setSelected] = React.useState<any | null>(null);
+const SERVICIOS: Servicio[] = [
+  {
+    id: "sesion50",
+    title: "Sesión 50 min",
+    tag: "Individual",
+    desc:
+      "Sesiones individuales de 50 minutos enfocadas en acompañamiento personalizado. Trabajo con herramientas de psicoterapia humanista e integrativa para apoyar cambios sostenibles.",
+    bullets: ["Sesiones personalizadas", "Protocolos basados en evidencia"],
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: "pareja",
+    title: "Terapia de Pareja",
+    tag: "80 min",
+    desc:
+      "Espacio para mejorar comunicación, acuerdos y manejo de conflictos. Enfoque práctico y humano para reconectar y avanzar.",
+    bullets: ["Comunicación efectiva", "Herramientas para acuerdos"],
+    image:
+      "https://images.unsplash.com/photo-1516584566738-4f480e7f4498?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: "estres",
+    title: "Ansiedad y Estrés",
+    tag: "Acompañamiento",
+    desc:
+      "Intervenciones basadas en evidencia para regular ansiedad/estrés: psicoeducación, estrategias de respiración y herramientas para tu día a día.",
+    bullets: ["Regulación emocional", "Rutinas y estrategias prácticas"],
+    image:
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1200",
+  },
+];
 
-  React.useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
+export default function Servicios() {
+  const [selected, setSelected] = React.useState<Servicio | null>(null);
 
-  React.useEffect(() => {
-    if (selected) {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => { document.body.style.overflow = prev; };
-    }
-  }, [selected]);
+  const durationById: Record<string, string> = {
+    sesion50: "50 min",
+    pareja: "80 min",
+    estres: "50 min",
+  };
+
+  const duration = selected ? durationById[selected.id] ?? "Sesión" : "Sesión";
 
   return (
-    <section id="servicios" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-          <div className="max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 serif">Servicios <span className="text-accent">Especializados</span></h2>
-            <p className="text-gray-600 text-lg">Brindo acompañamiento en diversas áreas, adaptando cada intervención a tus necesidades específicas.</p>
-          </div>
-          <button className="text-blue-40000 font-bold flex items-center gap-2 hover:underline">
-            Ver todos los servicios <ArrowRight size={20} />
-          </button>
+    <section id="servicios" className="py-24 bg-white relative">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 serif">
+            Servicios <span className="text-accent">Especializados</span>
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Acompañamiento personalizado según tus necesidades.
+          </p>
         </div>
 
+        {/* TARJETAS */}
         <div className="grid md:grid-cols-3 gap-8">
-          {items.map((item, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
+          {SERVICIOS.map((s, i) => (
+            <motion.article
+              key={s.id}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-[2.5rem] bg-white shadow-lg"
+              transition={{ delay: i * 0.08 }}
+              className="relative rounded-[2.5rem] overflow-hidden shadow-lg border border-gray-100 group"
             >
-              <div className="aspect-[3/4] overflow-hidden">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
+              <div className="aspect-[4/5] bg-gray-100 overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-                <p className="text-pink-300 font-medium text-sm mb-2 uppercase tracking-widest">{item.price}</p>
-                <h3 className="text-2xl font-bold text-white serif mb-4">{item.title}</h3>
-                <button onClick={() => setSelected(item)} className="bg-white/20 backdrop-blur-md text-white border border-blue-300 py-2 rounded-full text-sm font-medium hover:bg-blue-400 hover:text-white transition-all">
+
+              {/* overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 flex flex-col justify-end">
+                <p className="text-pink-300 font-medium text-xs uppercase tracking-widest mb-2">
+                  {s.tag}
+                </p>
+                <h3 className="text-2xl font-bold text-white serif mb-3">
+                  {s.title}
+                </h3>
+
+                <button
+                  type="button"
+                  onClick={() => setSelected(s)}
+                  className="w-fit px-6 py-2 rounded-full text-sm font-semibold bg-white/20 text-white border border-white/30 hover:bg-[#53A2FE] hover:border-[#53A2FE] transition"
+                >
                   Saber más
                 </button>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
 
-      {selected && (
-        <div className="modal-overlay fixed inset-0 z-70 flex items-center justify-center px-6" onClick={() => setSelected(null)} role="dialog" aria-modal="true">
-          <div className="modal max-w-3xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className="flex flex-col md:flex-row">
-              <div className="md:w-1/2 relative">
-                <img src={selected.image} alt={selected.title} className="w-full h-full object-cover" />
-              </div>
-              <div className="md:w-1/2 p-8">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold serif mb-2">{selected.title}</h3>
-                    <p className="text-sm text-pink-300 font-medium uppercase tracking-widest mb-4">{selected.price}</p>
-                  </div>
-                  <button className="text-gray-500 hover:text-gray-700 ml-4" onClick={() => setSelected(null)} aria-label="Cerrar diálogo"><X size={22} /></button>
+      {/* MODAL */}
+      <Modal
+        open={!!selected}
+        title={selected?.title}
+        onClose={() => setSelected(null)}
+      >
+        {selected && (
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Imagen con overlay + marca */}
+            <div className="relative rounded-3xl overflow-hidden bg-gray-100 shadow-lg">
+              <img
+                src={selected.image}
+                alt={selected.title}
+                className="w-full h-72 lg:h-[520px] object-cover"
+              />
+
+              {/* overlay: púrpura + azul + rosa */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#B508B0]/25 via-transparent to-[#53A2FE]/20" />
+
+              {/* Badge inferior */}
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-white/80 text-xs uppercase tracking-[0.2em]">
+                    {selected.tag}
+                  </p>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold serif leading-tight truncate">
+                    {selected.title}
+                  </h4>
                 </div>
-                <p className="text-gray-700 leading-relaxed mb-6">{selected.desc}</p>
-                <ul className="list-disc ml-5 text-gray-700 mb-6">
-                  <li>Sesiones personalizadas</li>
-                  <li>Protocolos basados en evidencia</li>
-                  <li>Enfoque cálido y humano</li>
-                </ul>
-                <div className="flex gap-3">
-                  <a href="#contacto" className="bg-accent text-white px-5 py-3 rounded-lg shadow-md">Reservar Cita</a>
-                  <button onClick={() => setSelected(null)} className="border px-4 py-3 rounded-lg">Cerrar</button>
+
+                <div className="shrink-0 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 px-4 py-2">
+                  <div className="flex items-center gap-2 text-white">
+                    <Clock size={16} />
+                    <p className="text-sm font-semibold">{duration}</p>
+                  </div>
+                  <p className="text-white/80 text-xs">Duración estimada</p>
                 </div>
               </div>
             </div>
+
+            {/* Contenido */}
+            <div>
+              {/* Chips */}
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl border text-sm font-semibold"
+                  style={{
+                    backgroundColor: "rgba(83,162,254,0.12)",
+                    borderColor: "rgba(83,162,254,0.22)",
+                    color: "#2A6FD6",
+                  }}
+                >
+                  <Sparkles size={16} />
+                  Atención personalizada
+                </span>
+
+                <span className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl border text-sm font-semibold"
+                  style={{
+                    backgroundColor: "rgba(181,8,176,0.10)",
+                    borderColor: "rgba(181,8,176,0.22)",
+                    color: "#8B0A89",
+                  }}
+                >
+                  <ShieldCheck size={16} />
+                  Confidencialidad
+                </span>
+
+                <span className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl border text-sm font-semibold"
+                  style={{
+                    backgroundColor: "rgba(224,80,135,0.10)",
+                    borderColor: "rgba(224,80,135,0.22)",
+                    color: "#C13A71",
+                  }}
+                >
+                  <span className="text-base">💗</span>
+                  Enfoque humano
+                </span>
+              </div>
+
+              <p className="text-gray-900 text-xl md:text-2xl font-bold serif mt-5">
+                ¿Qué trabajaremos?
+              </p>
+
+              <p className="text-gray-700 leading-relaxed mt-3">
+                {selected.desc}
+              </p>
+
+              {/* Bullets como cards con tu paleta */}
+              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                {selected.bullets.map((b, idx) => {
+                  const accent =
+                    idx % 3 === 0 ? "#B508B0" : idx % 3 === 1 ? "#53A2FE" : "#E05087";
+
+                  return (
+                    <div
+                      key={b}
+                      className="rounded-2xl border border-gray-100 bg-white shadow-sm p-4 flex gap-3"
+                    >
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white"
+                        style={{
+                          background: `linear-gradient(135deg, ${accent}, rgba(0,0,0,0))`,
+                          backgroundColor: accent,
+                        }}
+                      >
+                        ✓
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-bold text-gray-900">{b}</p>
+                        <p className="text-sm text-gray-600">
+                          Herramientas prácticas para tu proceso.
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Bloque premium */}
+              <div className="mt-6 rounded-3xl p-5 border"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(181,8,176,0.06), rgba(83,162,254,0.06))",
+                  borderColor: "rgba(0,0,0,0.06)",
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="text-xl">🧠</div>
+                  <div>
+                    <p className="font-bold text-gray-900">Enfoque integrativo</p>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Psicoterapia humanista + herramientas basadas en evidencia para cambios sostenibles.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="h-px bg-gray-200/70 my-4" />
+
+                <div className="flex items-start gap-3">
+                  <div className="text-xl">🔒</div>
+                  <div>
+                    <p className="font-bold text-gray-900">Privacidad y cuidado</p>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Un espacio seguro, respetuoso y profesional para hablar con libertad.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#contacto"
+                  onClick={() => setSelected(null)}
+                  className="inline-flex items-center justify-center rounded-2xl text-white font-bold px-6 py-4 shadow-lg hover:shadow-xl transition"
+                  style={{
+                    background: "linear-gradient(90deg, #B508B0, #E05087, #53A2FE)",
+                  }}
+                >
+                  <Calendar className="mr-2" size={18} />
+                  Agendar ahora
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setSelected(null)}
+                  className="inline-flex items-center justify-center rounded-2xl border border-gray-200 bg-white font-bold px-6 py-4 hover:bg-gray-50 transition"
+                >
+                  <X className="mr-2" size={18} />
+                  Cerrar
+                </button>
+              </div>
+
+              <p className="text-xs text-gray-500 mt-4">
+                * Si tienes dudas, envíanos un mensaje y te orientamos con el servicio ideal para ti.
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </Modal>
     </section>
   );
-};
-
-export default Servicios;
+}

@@ -14,7 +14,9 @@ import {
   Linkedin, 
   Mail, 
   Phone,
-  ChevronDown
+  ChevronDown,
+  Facebook,
+  MessageSquare
 } from 'lucide-react';
 
 // --- Components ---
@@ -33,7 +35,7 @@ const Navbar = () => {
     { name: 'Inicio', href: '#' },
     { name: 'Enfoque', href: '#enfoque' },
     { name: 'Servicios', href: '#servicios' },
-    { name: 'Sobre Mí', href: '#sobre-mi' },
+    { name: 'Sobre el Negocio', href: '#sobre-negocio' },
     { name: 'Contacto', href: '#contacto' },
   ];
 
@@ -54,7 +56,7 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="text-sm font-medium text-gray-700 hover:text-blue-500 transition-colors"
             >
               {link.name}
             </a>
@@ -91,7 +93,7 @@ const Navbar = () => {
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-gray-700 hover:text-accent"
+                  className="text-lg font-medium text-gray-700 hover:text-blue-500"
                 >
                   {link.name}
                 </a>
@@ -116,7 +118,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-accent uppercase bg-green-50 rounded-full border border-green-100">
+          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-accent uppercase bg-purple-50 rounded-full border border-purple-200">
             Psicoterapia Humanista & Integrativa
           </span>
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6 text-gray-900 serif">
@@ -163,7 +165,7 @@ const Hero = () => {
             className="absolute -bottom-6 -left-6 md:-left-12 glass p-6 rounded-2xl shadow-xl max-w-[200px]"
           >
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-accent">
+              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-accent">
                 <Heart size={20} />
               </div>
               <span className="text-sm font-bold serif">Bienestar Real</span>
@@ -174,8 +176,9 @@ const Hero = () => {
       </div>
 
       {/* Abstract Background Shapes */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-green-50 blur-[100px] opacity-60"></div>
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] rounded-full bg-amber-50 blur-[100px] opacity-40"></div>
+      {/* Gradient background shapes */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-purple-200 to-pink-200 blur-[100px] opacity-50"></div>
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-t from-blue-300 to-blue-100 blur-[100px] opacity-60"></div>
     </section>
   );
 };
@@ -200,9 +203,9 @@ const Enfoque = () => {
             <motion.div 
               key={i}
               whileHover={{ y: -10 }}
-              className="p-10 rounded-3xl bg-serene border border-gray-100 shadow-sm transition-all"
+              className="p-10 rounded-3xl bg-serene border-2 border-blue-400 shadow-sm transition-all hover:shadow-lg"
             >
-              <div className="text-accent mb-6 bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md">
+              <div className="text-accent mb-6 bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-md">
                 {point.icon}
               </div>
               <h3 className="text-2xl font-bold mb-4 serif">{point.title}</h3>
@@ -230,7 +233,7 @@ const Servicios = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 serif">Servicios <span className="text-accent">Especializados</span></h2>
             <p className="text-gray-600 text-lg">Brindo acompañamiento en diversas áreas, adaptando cada intervención a tus necesidades específicas.</p>
           </div>
-          <button className="text-accent font-bold flex items-center gap-2 hover:underline">
+          <button className="text-blue-40000 font-bold flex items-center gap-2 hover:underline">
             Ver todos los servicios <ArrowRight size={20} />
           </button>
         </div>
@@ -253,14 +256,122 @@ const Servicios = () => {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-                <p className="text-green-400 font-medium text-sm mb-2 uppercase tracking-widest">{item.price}</p>
+                <p className="text-pink-300 font-medium text-sm mb-2 uppercase tracking-widest">{item.price}</p>
                 <h3 className="text-2xl font-bold text-white serif mb-4">{item.title}</h3>
-                <button className="bg-white/20 backdrop-blur-md text-white border border-white/30 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-accent transition-all">
+                <button className="bg-white/20 backdrop-blur-md text-white border border-blue-300 py-2 rounded-full text-sm font-medium hover:bg-blue-400 hover:text-white transition-all">
                   Saber más
                 </button>
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SobreNegocio = () => {
+  const datos = [
+    { icon: <Heart size={40} />, title: "Misión", desc: "Proporcionar psicoterapia de calidad que transforme vidas y fortalezca la salud mental integral." },
+    { icon: <Sparkles size={40} />, title: "Visión", desc: "Ser la clínica de referencia en psicoterapia humanista, reconocida por excelencia." },
+    { icon: <Users size={40} />, title: "Valores", desc: "Empatía, profesionalismo, confidencialidad y respeto mutuo en cada sesión." },
+  ];
+
+  return (
+    <section id="sobre-negocio" className="py-24 bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Decorative shapes */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-transparent blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-blue-200/30 to-transparent blur-[120px] rounded-full translate-x-1/2 translate-y-1/2"></div>
+
+        <div className="relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 serif bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Sobre Nosotros</h2>
+            <p className="text-gray-600 text-lg leading-relaxed">Descubre nuestra misión, visión y el compromiso que nos define en el cuidado de tu bienestar emocional.</p>
+          </div>
+
+          {/* Misión, Visión, Valores */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            {datos.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(181, 8, 176, 0.15)" }}
+                className="bg-white rounded-2xl p-8 border border-gray-100 shadow-md transition-all hover:border-purple-200"
+              >
+                <div className="text-purple-600 mb-6 bg-gradient-to-br from-purple-100 to-pink-100 w-16 h-16 rounded-xl flex items-center justify-center">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4 serif text-gray-900">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Historia - Lado a lado */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-4xl font-bold mb-8 serif text-gray-900">Nuestra Historia</h3>
+              <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                  La <span className="font-bold text-purple-600">Clínica de las Emociones y la Conducta</span> fue fundada con la convicción de que la salud mental es fundamental para una vida plena y significativa.
+                </p>
+                <p>
+                  Desde nuestros inicios, nos hemos dedicado a proporcionar un <span className="font-bold">espacio seguro, acogedor y profesional</span> donde cada persona pueda explorar sus emociones y fortalecer su bienestar.
+                </p>
+                <p>
+                  Nuestro enfoque integrativo combina la <span className="font-bold text-blue-600">calidez humanista</span> con las técnicas más efectivas basadas en evidencia científica, permitiendo que cada paciente encuentre su propio camino hacia el equilibrio emocional.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl p-8 border border-purple-200/50">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="text-2xl">🎯</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-1">Profesionalidad</h4>
+                      <p className="text-gray-600 text-sm">Equipo altamente capacitado con experiencia en psicoterapia</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="text-2xl">💙</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-1">Empatía</h4>
+                      <p className="text-gray-600 text-sm">Escucha activa y genuino interés en tu proceso</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="text-2xl">🔒</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-1">Confidencialidad</h4>
+                      <p className="text-gray-600 text-sm">Tu privacidad es sagrada en cada sesión</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="text-2xl">🌱</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-1">Crecimiento</h4>
+                      <p className="text-gray-600 text-sm">Apoyo integral para tu transformación personal</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -314,7 +425,7 @@ const Testimonios = () => {
           </div>
         </div>
       </div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-green-900/40 blur-[100px] rounded-full"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-500/40 to-purple-900/40 blur-[100px] rounded-full"></div>
     </section>
   );
 };
@@ -331,14 +442,14 @@ const Contact = () => {
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center"><Mail size={24} /></div>
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400"><Mail size={24} /></div>
                   <div>
                     <p className="text-sm text-white/60">Email</p>
                     <p className="font-medium">hola@serenamente.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center"><Phone size={24} /></div>
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400"><Phone size={24} /></div>
                   <div>
                     <p className="text-sm text-white/60">Teléfono / WhatsApp</p>
                     <p className="font-medium">+34 600 000 000</p>
@@ -348,8 +459,8 @@ const Contact = () => {
             </div>
 
             <div className="flex gap-6 mt-12">
-              <Instagram className="cursor-pointer hover:text-green-300 transition-colors" />
-              <Linkedin className="cursor-pointer hover:text-green-300 transition-colors" />
+              <Instagram className="cursor-pointer hover:text-pink-300 transition-colors" />
+              <Linkedin className="cursor-pointer hover:text-pink-300 transition-colors" />
             </div>
           </div>
 
@@ -358,20 +469,20 @@ const Contact = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-gray-700">Nombre</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-gray-50" placeholder="Tu nombre" />
+                  <input type="text" className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50" placeholder="Tu nombre" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-gray-700">Apellido</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-gray-50" placeholder="Tu apellido" />
+                  <input type="text" className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50" placeholder="Tu apellido" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Email</label>
-                <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-gray-50" placeholder="correo@ejemplo.com" />
+                <input type="email" className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50" placeholder="correo@ejemplo.com" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Motivo de consulta</label>
-                <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-gray-50 appearance-none">
+                <select className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50 appearance-none">
                   <option>Terapia Individual</option>
                   <option>Terapia de Pareja</option>
                   <option>Ansiedad</option>
@@ -380,9 +491,9 @@ const Contact = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Mensaje</label>
-                <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-gray-50" placeholder="Cuéntame brevemente cómo puedo ayudarte..."></textarea>
+                <textarea rows={4} className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50" placeholder="Cuéntame brevemente cómo puedo ayudarte..."></textarea>
               </div>
-              <button className="w-full bg-accent text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:bg-opacity-90 transition-all">
+              <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-700 transition-all">
                 Enviar mensaje
               </button>
             </form>
@@ -395,16 +506,52 @@ const Contact = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-2xl font-bold text-accent serif">Serenamente</div>
-        <div className="flex gap-8 text-sm text-gray-500">
-          <a href="#" className="hover:text-accent">Privacidad</a>
-          <a href="#" className="hover:text-accent">Cookies</a>
-          <a href="#" className="hover:text-accent">Términos</a>
+    <footer className="py-16 bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Nombre Clínica */}
+          <div>
+            <div className="text-2xl font-bold text-accent serif mb-4">Clinica de las Emociones y la Conducta</div>
+            <p className="text-gray-600 text-sm">Psicoterapia humanista e integrativa para tu bienestar emocional.</p>
+          </div>
+
+          {/* Contacto */}
+          <div>
+            <h3 className="font-bold text-gray-800 mb-4">Contacto</h3>
+            <div className="space-y-3 text-sm text-gray-600">
+              <p>📞 <a href="tel:+34600000000" className="hover:text-blue-500 transition-colors">+34 600 000 000</a></p>
+              <p>📧 <a href="mailto:hola@serenamente.com" className="hover:text-blue-500 transition-colors">hola@serenamente.com</a></p>
+              <p>📍 Madrid, España</p>
+            </div>
+          </div>
+
+          {/* Enlaces */}
+          <div>
+            <h3 className="font-bold text-gray-800 mb-4">Enlaces</h3>
+            <div className="space-y-2 text-sm">
+              <a href="#" className="text-gray-600 hover:text-blue-500 transition-colors block">Privacidad</a>
+              <a href="#" className="text-gray-600 hover:text-blue-500 transition-colors block">Cookies</a>
+              <a href="#" className="text-gray-600 hover:text-blue-500 transition-colors block">Términos</a>
+            </div>
+          </div>
+
+          {/* Redes Sociales */}
+          <div>
+            <h3 className="font-bold text-gray-800 mb-4">Síguenos</h3>
+            <div className="flex gap-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors p-2 bg-gray-200 rounded-lg hover:bg-blue-100"><Facebook size={20} /></a>
+              <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500 transition-colors p-2 bg-gray-200 rounded-lg hover:bg-green-100"><MessageSquare size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors p-2 bg-gray-200 rounded-lg hover:bg-pink-100"><Instagram size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-blue-700 transition-colors p-2 bg-gray-200 rounded-lg hover:bg-blue-100"><Linkedin size={20} /></a>
+            </div>
+          </div>
         </div>
-        <div className="text-sm text-gray-400">
-          © {new Date().getFullYear()} Serenamente Psicología. Todos los derechos reservados.
+
+        {/* Línea divisoria */}
+        <div className="border-t border-gray-300 pt-8">
+          <p className="text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} Clinica de las Emociones y la Conducta. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>
@@ -434,7 +581,7 @@ export default function App() {
         <Hero />
         <Enfoque />
         <Servicios />
-        <Testimonios />
+        <SobreNegocio />
         <Contact />
       </main>
       <Footer />
@@ -445,7 +592,7 @@ export default function App() {
         animate={{ opacity: 1, scale: 1 }}
         className="fixed bottom-6 right-6 z-40 md:hidden"
       >
-        <button className="w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl">
+        <button className="w-14 h-14 bg-pink-500 text-white rounded-full flex items-center justify-center shadow-2xl">
           <MessageCircle size={30} />
         </button>
       </motion.div>

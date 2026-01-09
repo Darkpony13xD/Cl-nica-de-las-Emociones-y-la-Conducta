@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Heart, Brain, Sparkles, Users } from 'lucide-react';
 
+
+
+
 const Hero: React.FC = () => {
   return (
     <section className="relative min-height-screen flex items-center pt-20 overflow-hidden bg-serene min-h-[90vh]">
@@ -43,11 +46,12 @@ const Hero: React.FC = () => {
           className="relative"
         >
           <div className="relative w-full aspect-square md:aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1000" 
-              alt="Psychologist session" 
-              className="w-full h-full object-cover"
-            />
+           <img 
+  src="/logo.png"
+  alt="Clínica de las Emociones y la Conducta"
+  className="w-full h-full object-contain p-10"
+ />
+
             <div className="absolute inset-0 bg-accent/10 mix-blend-multiply"></div>
           </div>
           

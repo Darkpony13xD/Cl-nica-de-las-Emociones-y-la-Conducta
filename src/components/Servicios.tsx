@@ -21,7 +21,7 @@ const SERVICIOS: Servicio[] = [
       "Sesiones individuales de 50 minutos enfocadas en acompañamiento personalizado. Trabajo con herramientas de psicoterapia humanista e integrativa para apoyar cambios sostenibles.",
     bullets: ["Sesiones personalizadas", "Protocolos basados en evidencia"],
     image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1200",
+      "/logo_2.png",
   },
   {
     id: "pareja",
@@ -31,7 +31,7 @@ const SERVICIOS: Servicio[] = [
       "Espacio para mejorar comunicación, acuerdos y manejo de conflictos. Enfoque práctico y humano para reconectar y avanzar.",
     bullets: ["Comunicación efectiva", "Herramientas para acuerdos"],
     image:
-      "https://images.unsplash.com/photo-1516584566738-4f480e7f4498?auto=format&fit=crop&q=80&w=1200",
+      "/logo_2.png",
   },
   {
     id: "estres",
@@ -41,7 +41,7 @@ const SERVICIOS: Servicio[] = [
       "Intervenciones basadas en evidencia para regular ansiedad/estrés: psicoeducación, estrategias de respiración y herramientas para tu día a día.",
     bullets: ["Regulación emocional", "Rutinas y estrategias prácticas"],
     image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1200",
+      "/logo_2.png",
   },
 ];
 

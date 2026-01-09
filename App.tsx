@@ -42,13 +42,16 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'py-4 glass shadow-sm' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <motion.div 
+        <motion.a
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-bold tracking-tight text-accent serif"
+          href="#"
+          aria-label="Inicio - Clínica de las Emociones y la Conducta"
         >
-          Clinica de las emociones y la conducta
-        </motion.div>
+          <span className="text-2xl md:text-3xl font-extrabold tracking-tight serif bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Clínica de las Emociones y la Conducta
+          </span>
+        </motion.a> 
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8 items-center">
@@ -321,7 +324,7 @@ const SobreNegocio = () => {
               <h3 className="text-4xl font-bold mb-8 serif text-gray-900">Nuestra Historia</h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  La <span className="font-bold text-purple-600">Clínica de las Emociones y la Conducta</span> fue fundada con la convicción de que la salud mental es fundamental para una vida plena y significativa.
+                  La <span className="font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Clínica de las Emociones y la Conducta</span> fue fundada con la convicción de que la salud mental es fundamental para una vida plena y significativa.
                 </p>
                 <p>
                   Desde nuestros inicios, nos hemos dedicado a proporcionar un <span className="font-bold">espacio seguro, acogedor y profesional</span> donde cada persona pueda explorar sus emociones y fortalecer su bienestar.
@@ -511,7 +514,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Nombre Clínica */}
           <div>
-            <div className="text-2xl font-bold text-accent serif mb-4">Clinica de las Emociones y la Conducta</div>
+            <div className="text-2xl font-extrabold serif bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">Clínica de las Emociones y la Conducta</div>
             <p className="text-gray-600 text-sm">Psicoterapia humanista e integrativa para tu bienestar emocional.</p>
           </div>
 
@@ -550,7 +553,7 @@ const Footer = () => {
         {/* Línea divisoria */}
         <div className="border-t border-gray-300 pt-8">
           <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Clinica de las Emociones y la Conducta. Todos los derechos reservados.
+            © {new Date().getFullYear()} Clínica de las Emociones y la Conducta. Todos los derechos reservados.
           </p>
         </div>
       </div>

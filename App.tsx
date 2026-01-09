@@ -26,9 +26,8 @@ const SHOW_BACKGROUND = true;
 
 const AnimatedBackground = () => {
   const [reduceMotion, setReduceMotion] = useState(false);
-  const [forceMotion, setForceMotion] = useState<boolean>(() => {
-    try { return localStorage.getItem('forceMotion') === '1'; } catch { return false; }
-  });
+  // Force motion on by default (button removed so animation always-on)
+  const [forceMotion] = useState<boolean>(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && 'matchMedia' in window) {
@@ -40,9 +39,7 @@ const AnimatedBackground = () => {
     }
   }, []);
 
-  useEffect(() => {
-    try { localStorage.setItem('forceMotion', forceMotion ? '1' : '0'); } catch {}
-  }, [forceMotion]);
+
 
   const useMotion = !reduceMotion || forceMotion;
 
@@ -161,17 +158,7 @@ const AnimatedBackground = () => {
         </div>
       </div>
 
-      {/* Toggle button to force motion stays on top and interactive */}
-      <div className="pointer-events-none">
-        <button
-          aria-pressed={forceMotion}
-          onClick={() => setForceMotion((s) => !s)}
-          className="motion-toggle pointer-events-auto fixed left-4 bottom-4 z-60 bg-white/90 text-sm text-gray-800 px-3 py-2 rounded-full shadow-md backdrop-blur transition-opacity hover:opacity-95"
-          title="Forzar movimiento de fondo"
-        >
-          {forceMotion ? 'Detener movimiento' : 'Mostrar movimiento'}
-        </button>
-      </div> 
+
     </>
   );
 };

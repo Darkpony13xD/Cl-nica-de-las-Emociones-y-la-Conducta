@@ -1,6 +1,7 @@
+import { Brain, Heart, Settings } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+
 import { motion } from 'framer-motion';
-import { Heart, Brain } from 'lucide-react';
 
 const AnimatedBackground: React.FC = () => {
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -72,13 +73,14 @@ const AnimatedBackground: React.FC = () => {
   const particles = React.useMemo(() => {
     const particleCount = 20;
     return Array.from({ length: particleCount }).map((_, i) => {
-      const type = Math.random() > 0.55 ? 'heart' : 'brain';
+      const r = Math.random();
+      const type = r > 0.66 ? 'heart' : r > 0.33 ? 'brain' : 'gear';
       const left = Math.round(Math.random() * 100);
       const drift = Math.round((Math.random() * 40) - 20);
       const delay = (Math.random() * -6).toFixed(2);
       const dur = (12 + Math.random() * 28).toFixed(2);
       const baseSize = Math.round(10 + Math.random() * 24);
-      const size = type === 'brain' ? Math.round(baseSize * 1.2) : baseSize;
+      const size = type === 'brain' || type === 'gear' ? Math.round(baseSize * 1.2) : baseSize;
       return {
         id: i,
         type,
@@ -115,15 +117,26 @@ const AnimatedBackground: React.FC = () => {
             </mask>
           </defs>
         </svg>
-        <div className="bg-particles absolute inset-0 pointer-events-none" style={{ mask: 'url(#particles-mask)', WebkitMask: 'url(#particles-mask)', mixBlendMode: 'overlay', opacity: 0.72 }} aria-hidden>
+        <div className="bg-particles absolute inset-0 pointer-events-none" style={{ mask: 'url(#particles-mask)', WebkitMask: 'url(#particles-mask)', opacity: 0.72 }} aria-hidden>
           {particles.map((p) => (
             <div
               key={p.id}
               className={`bg-particle ${p.type}`}
-              style={{ left: `${p.left}%`, ['--d' as any]: `${p.dur}s`, ['--delay' as any]: `${p.delay}s`, ['--drift' as any]: `${p.drift}`, width: p.size, height: p.size, opacity: 0.72 }}
+              style={{ left: `${p.left}%`, ['--d' as any]: `${p.dur}s`, ['--delay' as any]: `${p.delay}s`, ['--drift' as any]: `${p.drift}`, width: p.size, height: p.size, opacity: p.type === 'gear' ? 0.9 : 0.72 }}
               aria-hidden
             >
-              {p.type === 'heart' ? <Heart size={p.size} /> : <Brain size={p.size} />}
+              {p.type === 'heart' ? (
+                <Heart size={p.size} />
+              ) : p.type === 'brain' ? (
+                <Brain size={p.size} />
+              ) : (
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  <Settings size={p.size} color="#1f2937" />
+                </motion.div>
+              )}
             </div>
           ))}
         </div>

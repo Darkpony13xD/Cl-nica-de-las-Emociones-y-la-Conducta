@@ -1,7 +1,6 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { Brain, Cog, Heart } from 'lucide-react';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 const AnimatedBackground: React.FC = () => {
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -70,25 +69,35 @@ const AnimatedBackground: React.FC = () => {
   }, []);
 
   /* ================= PARTICLES ================= */
-  const particles = useMemo(() => {
-    return Array.from({ length: 20 }).map((_, i) => {
-      const r = Math.random();
-      const type = r > 0.66 ? 'heart' : r > 0.33 ? 'brain' : 'gear';
+  const generateParticle = (id: number, isInitial = false) => {
+    const r = Math.random();
+    const type = r > 0.66 ? 'heart' : r > 0.33 ? 'brain' : 'gear';
 
-      const baseSize = 14 + Math.random() * 20;
-      const size = type === 'gear' ? baseSize * 1.4 : baseSize;
+    const baseSize = 14 + Math.random() * 20;
+    const size = type === 'gear' ? baseSize * 1.4 : baseSize;
 
-      return {
-        id: i,
-        type,
-        left: Math.random() * 100,
-        drift: `${Math.random() * 40 - 20}px`,
-        delay: `${Math.random() * -6}s`,
-        dur: `${14 + Math.random() * 24}s`,
-        size,
-      };
-    });
-  }, []);
+    return {
+      id,
+      type,
+      left: Math.random() * 100,
+      drift: `${Math.random() * 40 - 20}px`,
+      delay: isInitial ? `${Math.random() * -30}s` : '0s',
+      dur: `${14 + Math.random() * 24}s`,
+      size,
+    };
+  };
+
+  const [particles, setParticles] = useState(() => {
+    return Array.from({ length: 20 }).map((_, i) => generateParticle(i, true));
+  });
+
+  const removeParticle = (id: number) => {
+    setParticles((prev) => prev.filter((p) => p.id !== id));
+    // Reaparecer una nueva partícula después de 1 segundo
+    setTimeout(() => {
+      setParticles((prev) => [...prev, generateParticle(Date.now() + Math.random())]);
+    }, 1000);
+  };
 
   return (
     <>
@@ -115,48 +124,56 @@ const AnimatedBackground: React.FC = () => {
           </defs>
         </svg>
 
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
           className="absolute inset-0"
           style={{
             mask: 'url(#particles-mask)',
             WebkitMask: 'url(#particles-mask)',
           }}
         >
-          {particles.map((p) => (
-            <div
-              key={p.id}
-              className={`absolute bg-particle ${p.type}`}
-              style={{
-                left: `${p.left}%`,
-                ['--d' as any]: p.dur,
-                ['--delay' as any]: p.delay,
-                ['--drift' as any]: p.drift,
-                width: p.size,
-                height: p.size,
-                opacity: p.type === 'gear' ? 1 : 0.6,
-              }}
-            >
-              {p.type === 'heart' && <Heart size={p.size} />}
-              {p.type === 'brain' && <Brain size={p.size} />}
+          <AnimatePresence>
+            {particles.map((p) => (
+              <motion.div
+                key={p.id}
+                className={`absolute bg-particle ${p.type} cursor-pointer pointer-events-auto`}
+                onClick={() => removeParticle(p.id)}
+                exit={{ scale: 2, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  left: `${p.left}%`,
+                  ['--d' as any]: p.dur,
+                  ['--delay' as any]: p.delay,
+                  ['--drift' as any]: p.drift,
+                  width: p.size,
+                  height: p.size,
+                  opacity: p.type === 'gear' ? 1 : 0.6,
+                }}
+              >
+                {p.type === 'heart' && <Heart size={p.size} />}
+                {p.type === 'brain' && <Brain size={p.size} />}
 
-              {/* ===== ENGRANE NORMAL, PERO VISIBLE ===== */}
-              {p.type === 'gear' && (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="w-full h-full flex items-center justify-center"
-                >
-                  <Cog
-                    size={p.size}
-                    strokeWidth={2.5}
-                    className="text-[#9333ea]"
-                    style={{ stroke: '#9333ea' }}
-                  />
-                </motion.div>
-              )}
-            </div>
-          ))}
-        </div>
+                {/* ===== ENGRANE NORMAL, PERO VISIBLE ===== */}
+                {p.type === 'gear' && (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    className="w-full h-full flex items-center justify-center"
+                  >
+                    <Cog
+                      size={p.size}
+                      strokeWidth={2.5}
+                      className="text-[#9333ea]"
+                      style={{ stroke: '#9333ea' }}
+                    />
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </>
   );

@@ -1,140 +1,157 @@
-import { Brain, Heart, Settings } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { Brain, Cog, Heart } from 'lucide-react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { motion } from 'framer-motion';
 
 const AnimatedBackground: React.FC = () => {
   const [reduceMotion, setReduceMotion] = useState(false);
-  // Force motion on by default
-  const [forceMotion] = useState<boolean>(true);
+  const [forceMotion] = useState(true);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'matchMedia' in window) {
-      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-      setReduceMotion(mq.matches);
-      const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
-      mq.addEventListener?.('change', handler);
-      return () => mq.removeEventListener?.('change', handler);
-    }
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduceMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
+    mq.addEventListener?.('change', handler);
+    return () => mq.removeEventListener?.('change', handler);
   }, []);
 
   const useMotion = !reduceMotion || forceMotion;
 
-  // SVG mask ref + updater to respect elements with .no-particles
-  const svgRef = React.useRef<SVGSVGElement | null>(null);
+  /* ================= MASK ================= */
+  const svgRef = useRef<SVGSVGElement | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window === 'undefined') return;
-    let raf = 0 as number | null;
-    let timer = 0 as number | null;
 
-    const perform = () => {
+    const update = () => {
       const svg = svgRef.current;
       if (!svg) return;
+
       const w = window.innerWidth;
       const h = window.innerHeight;
-      try { svg.setAttribute('width', String(w)); svg.setAttribute('height', String(h)); svg.setAttribute('viewBox', `0 0 ${w} ${h}`); } catch {}
+
+      svg.setAttribute('width', `${w}`);
+      svg.setAttribute('height', `${h}`);
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
       const mask = svg.querySelector('mask');
       if (!mask) return;
-      let inner = `<rect x="0" y="0" width="${w}" height="${h}" fill="white"/>`;
+
+      let inner = `<rect x="0" y="0" width="${w}" height="${h}" fill="white" />`;
       const pad = 12;
+
       document.querySelectorAll('.no-particles').forEach((el) => {
         const r = el.getBoundingClientRect();
-        if (r.width > 0 && r.height > 0) {
-          const left = Math.max(0, Math.floor(r.left) + pad);
-          const top = Math.max(0, Math.floor(r.top) + pad);
-          const width = Math.max(0, Math.ceil(r.width) - pad * 2);
-          const height = Math.max(0, Math.ceil(r.height) - pad * 2);
-          if (width > 24 && height > 24) {
-            inner += `<rect x="${left}" y="${top}" width="${width}" height="${height}" fill="black"/>`;
-          }
+        if (r.width && r.height) {
+          inner += `
+            <rect
+              x="${Math.max(0, r.left + pad)}"
+              y="${Math.max(0, r.top + pad)}"
+              width="${Math.max(0, r.width - pad * 2)}"
+              height="${Math.max(0, r.height - pad * 2)}"
+              fill="black"
+            />
+          `;
         }
       });
-      try { mask.innerHTML = inner; } catch (e) { /* ignore */ }
+
+      mask.innerHTML = inner;
     };
 
-    const updateMask = () => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(perform) as any;
-      if (timer) clearTimeout(timer);
-      timer = window.setTimeout(() => { if (raf) cancelAnimationFrame(raf); perform(); }, 200);
-    };
+    update();
+    window.addEventListener('resize', update);
+    window.addEventListener('scroll', update, { passive: true });
 
-    updateMask();
-    const onResize = updateMask;
-    const onScroll = () => updateMask();
-    window.addEventListener('resize', onResize);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    const mo = new MutationObserver(() => updateMask());
-    mo.observe(document.body, { childList: true, subtree: true });
-    return () => { window.removeEventListener('resize', onResize); window.removeEventListener('scroll', onScroll); mo.disconnect(); if (raf) cancelAnimationFrame(raf); if (timer) clearTimeout(timer); };
+    return () => {
+      window.removeEventListener('resize', update);
+      window.removeEventListener('scroll', update);
+    };
   }, []);
 
-  const particles = React.useMemo(() => {
-    const particleCount = 20;
-    return Array.from({ length: particleCount }).map((_, i) => {
+  /* ================= PARTICLES ================= */
+  const particles = useMemo(() => {
+    return Array.from({ length: 20 }).map((_, i) => {
       const r = Math.random();
       const type = r > 0.66 ? 'heart' : r > 0.33 ? 'brain' : 'gear';
-      const left = Math.round(Math.random() * 100);
-      const drift = Math.round((Math.random() * 40) - 20);
-      const delay = (Math.random() * -6).toFixed(2);
-      const dur = (12 + Math.random() * 28).toFixed(2);
-      const baseSize = Math.round(10 + Math.random() * 24);
-      const size = type === 'brain' || type === 'gear' ? Math.round(baseSize * 1.2) : baseSize;
+
+      const baseSize = 14 + Math.random() * 20;
+      const size = type === 'gear' ? baseSize * 1.4 : baseSize;
+
       return {
         id: i,
         type,
-        left,
-        drift: `${drift}px`,
-        delay,
-        dur,
-        size
+        left: Math.random() * 100,
+        drift: `${Math.random() * 40 - 20}px`,
+        delay: `${Math.random() * -6}s`,
+        dur: `${14 + Math.random() * 24}s`,
+        size,
       };
     });
   }, []);
 
   return (
     <>
-      {/* Background layer */}
-      <div aria-hidden className={`fixed inset-0 -z-20 ${useMotion ? '' : 'reduced'}`}>
-        <div className="absolute inset-0 gradient-animate opacity-100" />
+      {/* ================= BACKGROUND ================= */}
+      <div className="fixed inset-0 -z-20">
+        <div className="absolute inset-0 gradient-animate" />
         <div
-          className="absolute inset-0 mix-blend-overlay bg-gradient-to-br from-purple-300/40 via-pink-200/30 to-blue-300/40"
+          className="absolute inset-0 bg-gradient-to-br from-purple-300/40 via-pink-200/30 to-blue-300/40"
           style={{ mixBlendMode: 'overlay', opacity: 0.6 }}
-          aria-hidden
         />
-
-        <div className="absolute w-[560px] h-[560px] rounded-full blur-2xl bg-gradient-to-br from-purple-400/55 to-blue-400/45 opacity-70" style={{ left: '-14%', top: '4%' }} aria-hidden />
-        <div className="absolute w-[420px] h-[420px] rounded-full blur-[36px] bg-gradient-to-br from-pink-300/45 to-purple-300/35 opacity-65" style={{ right: '3%', bottom: '4%' }} aria-hidden />
       </div>
 
-      {/* Particle layer */}
-      <div aria-hidden className={`fixed inset-0 pointer-events-none z-10 ${useMotion ? '' : 'reduced'}`}>
-        <svg ref={svgRef} className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden xmlns="http://www.w3.org/2000/svg">
+      {/* ================= PARTICLES ================= */}
+      <div className="fixed inset-0 pointer-events-none z-20">
+        <svg
+          ref={svgRef}
+          className="absolute inset-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <defs>
             <mask id="particles-mask" maskUnits="userSpaceOnUse">
               <rect x="0" y="0" width="100%" height="100%" fill="white" />
             </mask>
           </defs>
         </svg>
-        <div className="bg-particles absolute inset-0 pointer-events-none" style={{ mask: 'url(#particles-mask)', WebkitMask: 'url(#particles-mask)', opacity: 0.72 }} aria-hidden>
+
+        <div
+          className="absolute inset-0"
+          style={{
+            mask: 'url(#particles-mask)',
+            WebkitMask: 'url(#particles-mask)',
+          }}
+        >
           {particles.map((p) => (
             <div
               key={p.id}
-              className={`bg-particle ${p.type}`}
-              style={{ left: `${p.left}%`, ['--d' as any]: `${p.dur}s`, ['--delay' as any]: `${p.delay}s`, ['--drift' as any]: `${p.drift}`, width: p.size, height: p.size, opacity: p.type === 'gear' ? 0.9 : 0.72 }}
-              aria-hidden
+              className={`absolute bg-particle ${p.type}`}
+              style={{
+                left: `${p.left}%`,
+                ['--d' as any]: p.dur,
+                ['--delay' as any]: p.delay,
+                ['--drift' as any]: p.drift,
+                width: p.size,
+                height: p.size,
+                opacity: p.type === 'gear' ? 1 : 0.6,
+              }}
             >
-              {p.type === 'heart' ? (
-                <Heart size={p.size} />
-              ) : p.type === 'brain' ? (
-                <Brain size={p.size} />
-              ) : (
+              {p.type === 'heart' && <Heart size={p.size} />}
+              {p.type === 'brain' && <Brain size={p.size} />}
+
+              {/* ===== ENGRANE NORMAL, PERO VISIBLE ===== */}
+              {p.type === 'gear' && (
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                  className="w-full h-full flex items-center justify-center"
                 >
-                  <Settings size={p.size} color="#1f2937" />
+                  <Cog
+                    size={p.size}
+                    strokeWidth={2.5}
+                    className="text-[#9333ea]"
+                    style={{ stroke: '#9333ea' }}
+                  />
                 </motion.div>
               )}
             </div>

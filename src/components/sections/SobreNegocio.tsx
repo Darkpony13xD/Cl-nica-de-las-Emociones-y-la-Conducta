@@ -77,7 +77,7 @@ export default function SobreNegocio() {
             ))}
           </div>
 
-          <div className="mt-16 grid lg:grid-cols-12 gap-12 items-start">
+          <div className="mt-12 lg:mt-16 grid lg:grid-cols-12 gap-12 items-start">
             {/* Columna Historia (Más ancha) */}
             <div className="lg:col-span-7">
               <motion.div

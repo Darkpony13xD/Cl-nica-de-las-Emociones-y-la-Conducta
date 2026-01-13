@@ -68,31 +68,31 @@ ${form.mensaje}`;
 
   return (
     <section id="contacto" className="py-12 bg-serene scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-white rounded-[3.5rem] shadow-2xl overflow-hidden grid md:grid-cols-2 border border-gray-100">
-          <div className="p-12 md:p-16 lg:p-20 bg-accent text-white flex flex-col justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="bg-white rounded-3xl md:rounded-[3.5rem] shadow-2xl overflow-hidden grid md:grid-cols-2 border border-gray-100">
+          <div className="p-6 md:p-16 lg:p-20 bg-accent text-white flex flex-col justify-between">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 serif text-center">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 serif text-center">
                 ¿Hablamos?
               </h2>
-              <p className="text-white/80 text-lg mb-12 text-center">
+              <p className="text-white/80 text-lg mb-8 md:mb-12 text-center">
                 Da el primer paso hacia una vida más plena. Estoy aquí para
                 escucharte.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
                     <Mail size={24} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm text-white/60">Email</p>
-                    <p className="font-medium">ServiciospsicologicosMA@gmail.com</p>
+                    <p className="font-medium break-all">ServiciospsicologicosMA@gmail.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
                     <Phone size={24} />
                   </div>
                   <div>
@@ -124,7 +124,7 @@ ${form.mensaje}`;
                       href="https://maps.app.goo.gl/75n9vmnETkB4b5pA8"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold text-sm px-6 py-2.5 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] transition-all hover:scale-105"
+                      className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 font-bold text-sm px-6 py-2.5 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] transition-all hover:scale-105 w-full md:w-auto"
                     >
                       Cómo llegar 📍
                     </a>
@@ -134,7 +134,7 @@ ${form.mensaje}`;
             </div>
 
             {/* ✅ Social Icons con links en nueva pestaña */}
-            <div className="flex gap-6 mt-12">
+            <div className="flex gap-6 mt-12 justify-center md:justify-start">
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
@@ -157,7 +157,7 @@ ${form.mensaje}`;
             </div>
           </div>
 
-          <div className="p-12 md:p-16 lg:p-20">
+          <div className="p-6 md:p-16 lg:p-20">
             <form className="no-particles space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">

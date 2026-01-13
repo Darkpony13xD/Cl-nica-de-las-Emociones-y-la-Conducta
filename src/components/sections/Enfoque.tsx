@@ -35,7 +35,7 @@ export default function Enfoque() {
 
         {/* Sección: Ir a terapia es ordenar */}
         <div className="mb-12">
-          <div className="bg-blue-50/50 rounded-[2.5rem] p-8 md:p-12 border border-blue-100 text-center">
+          <div className="bg-blue-50/50 rounded-[2.5rem] p-6 md:p-12 border border-blue-100 text-center">
             <h3 className="text-2xl font-bold text-gray-900 mb-8 serif">Ir a terapia es ordenar:</h3>
             <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
               <div className="flex items-center justify-center gap-3 bg-white px-6 py-3 rounded-2xl shadow-sm border border-blue-100">
@@ -59,7 +59,7 @@ export default function Enfoque() {
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
-              className="p-10 rounded-3xl bg-serene border-2 border-blue-400 shadow-sm transition-all hover:shadow-lg"
+              className="p-6 md:p-10 rounded-3xl bg-serene border-2 border-blue-400 shadow-sm transition-all hover:shadow-lg"
             >
               <div className="text-accent mb-6 bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-md">
                 {point.icon}

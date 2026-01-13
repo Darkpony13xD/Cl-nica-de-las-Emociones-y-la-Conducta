@@ -276,7 +276,7 @@ export default function Servicios() {
             </div>
 
             {/* Bullets Section (Full Width) */}
-            <div className="bg-gray-50/50 rounded-[2rem] p-8 border border-gray-100">
+            <div className="bg-gray-50/50 rounded-[2rem] p-6 md:p-8 border border-gray-100">
               <h4 className="text-xl font-bold text-gray-900 mb-6 serif">
                 Puntos clave del tratamiento
               </h4>

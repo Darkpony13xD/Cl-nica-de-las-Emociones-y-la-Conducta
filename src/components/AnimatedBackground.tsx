@@ -73,7 +73,9 @@ const AnimatedBackground: React.FC = () => {
     const r = Math.random();
     const type = r > 0.66 ? 'heart' : r > 0.33 ? 'brain' : 'gear';
 
-    const baseSize = 14 + Math.random() * 20;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    // Reducir tamaño en móvil
+    const baseSize = isMobile ? 10 + Math.random() * 14 : 14 + Math.random() * 20;
     const size = type === 'gear' ? baseSize * 1.4 : baseSize;
 
     return {
@@ -88,7 +90,10 @@ const AnimatedBackground: React.FC = () => {
   };
 
   const [particles, setParticles] = useState(() => {
-    return Array.from({ length: 20 }).map((_, i) => generateParticle(i, true));
+    // Reducir cantidad en móvil
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const count = isMobile ? 8 : 20;
+    return Array.from({ length: count }).map((_, i) => generateParticle(i, true));
   });
 
   const playPopSound = () => {

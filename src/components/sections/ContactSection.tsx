@@ -1,10 +1,10 @@
+import { ChevronDown, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import React, { useMemo, useState } from "react";
-import { Instagram, Facebook, Mail, Phone, ChevronDown } from "lucide-react";
 
 export default function ContactSection() {
   // ✅ Cambia este número por el WhatsApp real (formato internacional SIN +, SIN espacios).
   // México suele ser: 521 + 10 dígitos. Ej: 5215512345678
-  const WHATSAPP_NUMBER = "5215518441306";
+  const WHATSAPP_NUMBER = "525512270630";
 
   // ✅ Cambia tus links aquí
   const INSTAGRAM_URL = "https://www.facebook.com/profile.php?id=100067239251887  ";
@@ -13,10 +13,11 @@ export default function ContactSection() {
   const motives = useMemo(
     () => [
       "Selecciona un motivo",
-      "Terapia Individual",
-      "Terapia de Pareja",
-      "Ansiedad",
-      "Otros",
+      "Terapia Infantil",
+      "Terapia de Lenguaje",
+      "Terapia Ocupacional",
+      "Terapia Psicológica Individual",
+      "Grupo de Reflexión para Hombres",
     ],
     []
   );
@@ -66,15 +67,15 @@ ${form.mensaje}`;
   };
 
   return (
-    <section id="contacto" className="py-24 bg-serene scroll-mt-24">
+    <section id="contacto" className="py-12 bg-serene scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-white rounded-[3.5rem] shadow-2xl overflow-hidden grid md:grid-cols-2 border border-gray-100">
           <div className="p-12 md:p-16 lg:p-20 bg-accent text-white flex flex-col justify-between">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 serif">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 serif text-center">
                 ¿Hablamos?
               </h2>
-              <p className="text-white/80 text-lg mb-12">
+              <p className="text-white/80 text-lg mb-12 text-center">
                 Da el primer paso hacia una vida más plena. Estoy aquí para
                 escucharte.
               </p>
@@ -86,7 +87,7 @@ ${form.mensaje}`;
                   </div>
                   <div>
                     <p className="text-sm text-white/60">Email</p>
-                    <p className="font-medium">hola@serenamente.com</p>
+                    <p className="font-medium">ServiciospsicologicosMA@gmail.com</p>
                   </div>
                 </div>
 
@@ -96,7 +97,37 @@ ${form.mensaje}`;
                   </div>
                   <div>
                     <p className="text-sm text-white/60">Teléfono / WhatsApp</p>
-                    <p className="font-medium">+34 600 000 000</p>
+                    <p className="font-medium">55 1227 0630</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                    <MapPin size={24} />
+                  </div>
+                  <div className="w-full">
+                    <p className="text-sm text-white/60">Dirección</p>
+                    <p className="font-medium mb-3">Av. Veracruz Norte #2 esq Jalisco, Villa Milpa Alta.</p>
+                    
+                    <div className="w-full h-48 rounded-xl overflow-hidden border-2 border-white/50 shadow-lg bg-white/5 mb-4">
+                      <iframe
+                        title="Ubicación"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                        src="https://maps.google.com/maps?q=Av.%20Veracruz%20Norte%20%232%20esq%20Jalisco%2C%20Villa%20Milpa%20Alta&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                      />
+                    </div>
+
+                    <a
+                      href="https://maps.app.goo.gl/75n9vmnETkB4b5pA8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold text-sm px-6 py-2.5 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] transition-all hover:scale-105"
+                    >
+                      Cómo llegar 📍
+                    </a>
                   </div>
                 </div>
               </div>
@@ -164,7 +195,7 @@ ${form.mensaje}`;
                   value={form.email}
                   onChange={onChange("email")}
                   type="email"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all bg-blue-50/50"
                   placeholder="correo@ejemplo.com"
                 />
               </div>

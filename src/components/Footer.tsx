@@ -1,5 +1,6 @@
+import { Facebook, Heart, Instagram } from "lucide-react";
+
 import React from "react";
-import { Facebook, Instagram } from "lucide-react";
 
 const Footer: React.FC = () => {
   // ✅ Pon aquí tus links reales
@@ -9,11 +10,11 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="py-16 bg-gray-50 border-t border-gray-200">
+    <footer className="py-12 bg-gradient-to-b from-white to-purple-50 border-t border-purple-100">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           {/* Nombre Clínica */}
-          <div>
+          <div className="flex flex-col items-center text-center">
             <div className="text-2xl font-extrabold serif bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
               Clínica de las Emociones y la Conducta
             </div>
@@ -23,60 +24,35 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contacto */}
-          <div>
+          <div className="flex flex-col items-center text-center">
             <h3 className="font-bold text-gray-800 mb-4">Contacto</h3>
-            <div className="space-y-3 text-sm text-gray-600">
+            <div className="space-y-3 text-sm text-gray-600 flex flex-col items-center">
               <p>
                 📞{" "}
                 <a
-                  href="tel:+34600000000"
+                  href="tel:+525512270630"
                   className="hover:text-blue-500 transition-colors"
                 >
-                  +34 600 000 000
+                  55 1227 0630
                 </a>
               </p>
               <p>
                 📧{" "}
                 <a
-                  href="mailto:hola@serenamente.com"
+                  href="mailto:ServiciospsicologicosMA@gmail.com"
                   className="hover:text-blue-500 transition-colors"
                 >
-                  hola@serenamente.com
+                  ServiciospsicologicosMA@gmail.com
                 </a>
               </p>
-              <p>📍 Madrid, España</p>
-            </div>
-          </div>
-
-          {/* Enlaces */}
-          <div>
-            <h3 className="font-bold text-gray-800 mb-4">Enlaces</h3>
-            <div className="space-y-2 text-sm">
-              <a
-                href="#"
-                className="text-gray-600 hover:text-blue-500 transition-colors block"
-              >
-                Privacidad
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 hover:text-blue-500 transition-colors block"
-              >
-                Cookies
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 hover:text-blue-500 transition-colors block"
-              >
-                Términos
-              </a>
+              <p>📍 Av. Veracruz Norte #2 esq Jalisco, Villa Milpa Alta.</p>
             </div>
           </div>
 
           {/* Redes Sociales */}
-          <div>
+          <div className="flex flex-col items-center text-center">
             <h3 className="font-bold text-gray-800 mb-4">Síguenos</h3>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center">
               <a
                 href={SOCIAL_LINKS.facebook}
                 target="_blank"
@@ -101,10 +77,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Línea divisoria */}
-        <div className="border-t border-gray-300 pt-8">
-          <p className="text-center text-sm text-gray-500">
+        <div className="border-t border-purple-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-500">
             © {new Date().getFullYear()} Clínica de las Emociones y la Conducta.
-            Todos los derechos reservados.
+          </p>
+          <p className="text-sm text-gray-400 flex items-center gap-1">
+            Hecho con <Heart size={14} className="text-red-400 fill-red-400" /> para tu bienestar
           </p>
         </div>
       </div>

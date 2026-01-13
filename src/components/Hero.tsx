@@ -1,9 +1,7 @@
+import { ArrowRight, Brain, Heart, Sparkles, Users } from 'lucide-react';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Heart, Brain, Sparkles, Users } from 'lucide-react';
-
-
-
 
 const Hero: React.FC = () => {
   return (
@@ -14,14 +12,14 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-accent uppercase bg-purple-50 rounded-full border border-purple-200">
-            Psicoterapia Humanista & Integrativa
+          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold text-accent bg-purple-50 rounded-full border border-purple-200">
+            Psicoterapia humanista e integrativa, centrada en tu bienestar emocional.
           </span>
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6 text-gray-900 serif">
-            Encuentra tu paz en un espacio de <span className="text-accent italic">escucha profunda.</span>
+            Encuentra equilibrio emocional en un espacio <span className="text-accent italic">seguro para ti</span>
           </h1>
           <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-            Acompañamiento profesional diseñado para redescubrir tu equilibrio emocional y fortalecer tu salud mental con un enfoque cálido y humano.
+            Acompañamiento psicológico profesional que te ayuda a comprender lo que sientes, ordenar lo que piensas y transformar lo que haces, desde una escucha profunda, empática y sin juicios.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <motion.button 
@@ -29,12 +27,6 @@ const Hero: React.FC = () => {
               className="bg-accent text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 shadow-xl"
             >
               Comienza tu proceso <ArrowRight size={20} />
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              className="bg-white text-gray-800 border border-gray-200 px-8 py-4 rounded-full font-semibold"
-            >
-              Conoce mi método
             </motion.button>
           </div>
         </motion.div>

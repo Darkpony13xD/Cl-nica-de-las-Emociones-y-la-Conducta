@@ -1,7 +1,8 @@
+import { Calendar, Clock, ShieldCheck, Sparkles, X } from "lucide-react";
+
+import Modal from "../ui/Modal";
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, ShieldCheck, Sparkles, Clock, X } from "lucide-react";
-import Modal from "../ui/Modal";
 
 type Servicio = {
   id: string;
@@ -15,7 +16,7 @@ type Servicio = {
 const SERVICIOS: Servicio[] = [
   {
     id: "sesion50",
-    title: "Sesión 50 min",
+    title: "Terapia Psicologica Individual",
     tag: "Individual",
     desc:
       "Sesiones individuales de 50 minutos enfocadas en acompañamiento personalizado. Trabajo con herramientas de psicoterapia humanista e integrativa para apoyar cambios sostenibles.",
@@ -25,8 +26,8 @@ const SERVICIOS: Servicio[] = [
   },
   {
     id: "pareja",
-    title: "Terapia de Pareja",
-    tag: "80 min",
+    title: "Terapia Ocupacional",
+    tag: "Individual",
     desc:
       "Espacio para mejorar comunicación, acuerdos y manejo de conflictos. Enfoque práctico y humano para reconectar y avanzar.",
     bullets: ["Comunicación efectiva", "Herramientas para acuerdos"],
@@ -35,11 +36,31 @@ const SERVICIOS: Servicio[] = [
   },
   {
     id: "estres",
-    title: "Ansiedad y Estrés",
-    tag: "Acompañamiento",
+    title: "Grupo de reflexion para hombres",
+    tag: "Individual",
     desc:
       "Intervenciones basadas en evidencia para regular ansiedad/estrés: psicoeducación, estrategias de respiración y herramientas para tu día a día.",
     bullets: ["Regulación emocional", "Rutinas y estrategias prácticas"],
+    image:
+      "/logo_2.png",
+  },
+  {
+    id: "familiar",
+    title: "Terapia de Lenguaje",
+    tag: "Individual",
+    desc:
+      "Espacio seguro para abordar dinámicas familiares, mejorar la convivencia y fortalecer los vínculos afectivos entre los miembros.",
+    bullets: ["Resolución de conflictos", "Fortalecimiento de lazos"],
+    image:
+      "/logo_2.png",
+  },
+  {
+    id: "online",
+    title: "Terapia Infantil",
+    tag: "Individual",
+    desc:
+      "Recibe apoyo psicológico profesional desde la comodidad de tu hogar, con la misma efectividad y cercanía que la terapia presencial.",
+    bullets: ["Flexibilidad horaria", "Plataforma segura"],
     image:
       "/logo_2.png",
   },
@@ -52,6 +73,8 @@ export default function Servicios() {
     sesion50: "50 min",
     pareja: "80 min",
     estres: "50 min",
+    familiar: "80 min",
+    online: "50 min",
   };
 
   const duration = selected ? durationById[selected.id] ?? "Sesión" : "Sesión";
@@ -69,7 +92,7 @@ export default function Servicios() {
         </div>
 
         {/* TARJETAS */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {SERVICIOS.map((s, i) => (
             <motion.article
               key={s.id}
@@ -77,7 +100,7 @@ export default function Servicios() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="relative rounded-[2.5rem] overflow-hidden shadow-lg border border-gray-100 group"
+              className="relative rounded-[2.5rem] overflow-hidden shadow-lg border border-gray-100 group w-full md:w-[calc((100%_-_4rem)_/_3)]"
             >
               <div className="aspect-[4/5] bg-gray-100 overflow-hidden">
                 <img

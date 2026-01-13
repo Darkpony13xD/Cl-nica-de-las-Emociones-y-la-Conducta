@@ -23,18 +23,6 @@ const Navbar: React.FC = () => {
     { name: 'Contacto', href: '#contacto' },
   ];
 
-  const goToContacto = (e?: React.MouseEvent) => {
-    if (e) e.preventDefault();
-    const el = document.getElementById('contacto');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      // fallback por si aún no existe el id
-      window.location.hash = '#contacto';
-    }
-    setIsOpen(false);
-  };
-
   return (
     <nav
       className={`no-particles fixed w-full z-50 transition-all duration-500 ${
@@ -49,7 +37,7 @@ const Navbar: React.FC = () => {
           aria-label="Inicio - Clínica de las Emociones y la Conducta"
           onClick={() => setIsOpen(false)}
         >
-          <span className="text-2xl md:text-3xl font-extrabold tracking-tight serif bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <span className="text-3xl md:text-4xl font-extrabold tracking-tight serif bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             Clínica de las Emociones y la Conducta
           </span>
         </motion.a>
@@ -60,7 +48,7 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-blue-500 transition-colors"
+              className="text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors"
               onClick={(e) => {
                 // Scroll suave para todos los anchors del menú
                 const id = link.href.startsWith('#') ? link.href.slice(1) : '';
@@ -76,16 +64,6 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-
-          {/* Reservar Cita -> Contacto */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={goToContacto}
-            className="bg-accent text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl transition-all"
-          >
-            Reservar Cita
-          </motion.button>
         </div>
 
         {/* Mobile Toggle */}
@@ -115,19 +93,11 @@ const Navbar: React.FC = () => {
                   }
                   setIsOpen(false);
                 }}
-                className="text-lg font-medium text-gray-700 hover:text-blue-500"
+                className="text-xl font-medium text-gray-700 hover:text-blue-500"
               >
                 {link.name}
               </a>
             ))}
-
-            {/* Reservar Cita -> Contacto */}
-            <button
-              onClick={goToContacto}
-              className="bg-accent text-white px-6 py-3 rounded-xl w-full text-center"
-            >
-              Reservar Cita
-            </button>
           </div>
         </div>
       )}

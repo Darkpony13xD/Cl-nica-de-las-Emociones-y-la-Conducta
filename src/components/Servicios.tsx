@@ -39,9 +39,9 @@ const SERVICIOS: Servicio[] = [
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                 Áreas de atención:
               </p>
-              <ul className="grid gap-3 text-gray-600 text-sm">
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
                 {["Rehabilitación del lenguaje", "Dificultades del habla", "Atención personalizada", "Estimulación y desarrollo"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2"><span className="text-purple-400 mt-0.5">▪</span>{item}</li>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3"><span className="text-purple-500">▪</span>{item}</li>
                 ))}
               </ul>
             </div>
@@ -77,9 +77,9 @@ const SERVICIOS: Servicio[] = [
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                 Enfoque:
               </p>
-              <ul className="grid gap-3 text-gray-600 text-sm">
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
                 {["Expresión emocional", "Procesamiento de traumas", "Manejo de ansiedad", "Problemas de conducta"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▪</span>{item}</li>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3"><span className="text-blue-500">▪</span>{item}</li>
                 ))}
               </ul>
             </div>
@@ -115,9 +115,9 @@ const SERVICIOS: Servicio[] = [
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                 Temas clave:
               </p>
-              <ul className="grid gap-3 text-gray-600 text-sm">
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
                 {["Identidad y Autoestima", "Manejo emocional", "Relaciones sociales", "Dinámica familiar"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2"><span className="text-purple-400 mt-0.5">▪</span>{item}</li>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3"><span className="text-purple-500">▪</span>{item}</li>
                 ))}
               </ul>
             </div>
@@ -153,9 +153,9 @@ const SERVICIOS: Servicio[] = [
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                 Abordaje:
               </p>
-              <ul className="grid gap-3 text-gray-600 text-sm">
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
                 {["Ansiedad y Depresión", "Autoestima y Duelo", "Conflictos de pareja", "Gestión del estrés"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▪</span>{item}</li>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3"><span className="text-blue-500">▪</span>{item}</li>
                 ))}
               </ul>
             </div>
@@ -191,9 +191,9 @@ const SERVICIOS: Servicio[] = [
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                 Beneficios:
               </p>
-              <ul className="grid gap-3 text-gray-600 text-sm">
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
                 {["Espacio seguro y confidencial", "Red de apoyo", "Crecimiento compartido", "Empoderamiento"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2"><span className="text-purple-400 mt-0.5">▪</span>{item}</li>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3"><span className="text-purple-500">▪</span>{item}</li>
                 ))}
               </ul>
             </div>
@@ -229,9 +229,9 @@ const SERVICIOS: Servicio[] = [
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                 Objetivos:
               </p>
-              <ul className="grid gap-3 text-gray-600 text-sm">
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
                 {["Relaciones sanas", "Creencias limitantes", "Autoestima", "Nuevas masculinidades"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▪</span>{item}</li>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3"><span className="text-blue-500">▪</span>{item}</li>
                 ))}
               </ul>
             </div>
@@ -285,8 +285,8 @@ const SERVICIOS: Servicio[] = [
                   "Bullying y acoso escolar",
                   "Límites e inteligencia emocional"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-purple-400 mt-0.5">▪</span>
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3">
+                    <span className="text-purple-500">▪</span>
                     {item}
                   </li>
                 ))}

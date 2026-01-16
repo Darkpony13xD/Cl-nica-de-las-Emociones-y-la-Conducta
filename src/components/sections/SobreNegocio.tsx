@@ -7,13 +7,13 @@ export default function SobreNegocio() {
     {
       icon: <Heart size={40} />,
       title: "Misión",
-      desc: "Brindar atención psicológica integral y ética, ayudando a las personas a comprender, regular y fortalecer sus emociones y conductas para mejorar su calidad de vida.",
+      desc: "Brindar servicios, éticos, científicos e integrales. Promoviendo la salud mental-emocional a nivel social e individual",
       color: "border-t-purple-500",
     },
     {
       icon: <Sparkles size={40} />,
       title: "Visión",
-      desc: "Ser una clínica reconocida por su calidez humana, profesionalismo y resultados positivos en el bienestar emocional de nuestros pacientes.",
+      desc: "Ser una clínica reconocida por su profesionalismo, innovación, sensibilidad y confianza, que aporte a la comunidad referentes dignos de atención psicológica y de transformación personal y colectiva.",
       color: "border-t-blue-500",
     },
     {
@@ -21,10 +21,10 @@ export default function SobreNegocio() {
       title: "Valores",
       desc: (
         <ul className="text-left space-y-2 mt-2">
-          <li><strong className="text-gray-900">Empatía:</strong> Escuchamos y comprendemos sin juzgar.</li>
-          <li><strong className="text-gray-900">Respeto:</strong> Valoramos la dignidad y diversidad de cada persona.</li>
-          <li><strong className="text-gray-900">Profesionalismo:</strong> Actuamos con ética y compromiso.</li>
-          <li><strong className="text-gray-900">Confidencialidad:</strong> Protegemos la privacidad y confianza.</li>
+          <li><strong className="text-gray-900">Profesionalismo:</strong> Actuamos con ética, rigor científico y compromiso.</li>
+          <li><strong className="text-gray-900">Innovación:</strong> Integramos herramientas terapéuticas actuales y efectivas.</li>
+          <li><strong className="text-gray-900">Sensibilidad:</strong> Acompañamos con empatía y respeto profundo.</li>
+          <li><strong className="text-gray-900">Confianza:</strong> Construimos un espacio seguro, confidencial y transparente.</li>
         </ul>
       ),
       color: "border-t-pink-500",
@@ -32,10 +32,10 @@ export default function SobreNegocio() {
   ];
 
   const principios = [
-    { emoji: "🎯", t: "Compromiso profesional", d: "Atención responsable, ética y enfocada en el bienestar del paciente.", bg: "bg-red-50" },
-    { emoji: "🤍", t: "Sensibilidad y empatía", d: "Acompañamiento cercano, respetando emociones, tiempos y procesos.", bg: "bg-blue-50" },
-    { emoji: "🔒", t: "Confianza y confidencialidad", d: "Cuidamos la privacidad como base fundamental de cada terapia.", bg: "bg-yellow-50" },
-    { emoji: "🌱", t: "Desarrollo personal", d: "Impulsamos el crecimiento emocional y conductual de manera integral.", bg: "bg-green-50" },
+    { emoji: "🎯", t: "Objetivos Claros", d: "Trabajamos con metas definidas para lograr cambios observables y medibles.", bg: "bg-red-50" },
+    { emoji: "🧠", t: "Psicoeducación", d: "Te ayudamos a entender cómo funciona tu mente para que retomes el control.", bg: "bg-blue-50" },
+    { emoji: "🤝", t: "Trabajo Colaborativo", d: "Formamos un equipo contigo: tú eres el experto en tu vida, nosotros en el método.", bg: "bg-yellow-50" },
+    { emoji: "🌱", t: "Cambio Sostenible", d: "Buscamos que desarrolles habilidades que te sirvan para toda la vida.", bg: "bg-green-50" },
   ];
 
   return (
@@ -89,7 +89,7 @@ export default function SobreNegocio() {
                   Nuestra Historia
                 </h3>
                 <div className="w-20 h-1.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-8" />
-                <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+                <div className="space-y-6 text-gray-600 text-lg leading-relaxed text-justify">
                   <p>
                     La <span className="font-bold text-purple-600">Clínica de las Emociones y la Conducta</span> nace con el propósito de acompañar a las personas en el cuidado de su salud emocional y conductual, entendiendo que el bienestar mental es clave para una vida equilibrada y consciente.
                   </p>
@@ -97,7 +97,7 @@ export default function SobreNegocio() {
                     Desde el inicio, hemos trabajado para construir un <span className="font-bold text-gray-900">espacio seguro, humano y confiable</span>, donde cada paciente se sienta escuchado, comprendido y acompañado en su proceso personal, sin juicios y con total respeto.
                   </p>
                   <p>
-                    Nuestro modelo de atención se basa en una visión integral, combinando el <span className="font-bold text-blue-600">trato humano y cercano</span> con herramientas terapéuticas actualizadas, enfocadas en generar cambios reales y sostenibles en la vida de quienes confían en nosotros.
+                    Nuestro modelo de atención ayuda a identificar y cambiar patrones de pensamiento y comportamiento negativos o poco útiles para manejar problemas específicos, conectando cómo piensas, sientes y actúas para reducir síntomas de depresión, ansiedad, estrés, trastornos alimentarios y dolor crónico, enseñando habilidades para enfrentar desafíos futuros y mejorar el bienestar general.
                   </p>
                 </div>
               </motion.div>

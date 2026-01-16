@@ -29,7 +29,7 @@ export default function Enfoque() {
             Un enfoque centrado <span className="italic text-accent">en ti</span>
           </h2>
           <p className="text-gray-600 text-lg leading-relaxed">
-            Entendemos la terapia como un proceso de acompañamiento consciente, donde caminamos contigo para ayudarte a comprender, ordenar y transformar tu mundo interno en un espacio seguro y profesional.
+            Entendemos la terapia como un proceso de acompañamiento consciente, donde caminamos contigo para ayudarte a comprender, ordenar y transformar tu mundo interno en un espacio seguro y profesional. Te enseña a reconocer pensamientos automáticos o distorsiones que te hacen sentir mal.
           </p>
         </div>
 

@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               Clínica de las Emociones y la Conducta
             </div>
             <p className="text-gray-600 text-sm">
-              Psicoterapia humanista e integrativa para tu bienestar emocional.
+              Psicoterapia basada en evidencia e integrativa para tu bienestar emocional.
             </p>
           </div>
 

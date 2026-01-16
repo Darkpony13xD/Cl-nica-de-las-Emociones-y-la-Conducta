@@ -13,11 +13,13 @@ export default function ContactSection() {
   const motives = useMemo(
     () => [
       "Selecciona un motivo",
-      "Terapia Infantil",
+      "Terapia infantojuvenil",
       "Terapia de Lenguaje",
-      "Terapia Ocupacional",
-      "Terapia Psicológica Individual",
+      "Terapia para Adolescentes",
+      "Terapia para Adultos",
+      "Grupos de contención para mujeres",
       "Grupo de Reflexión para Hombres",
+      "Área de atención a la comunidad",
     ],
     []
   );

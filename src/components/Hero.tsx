@@ -13,13 +13,13 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="hidden md:inline-block px-4 py-1.5 mb-6 text-xs font-semibold text-accent bg-purple-50 rounded-full border border-purple-200">
-            Psicoterapia humanista e integrativa, centrada en tu bienestar emocional.
+            Psicoterapia basada en evidencia
           </span>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-gray-900 serif">
             Encuentra equilibrio emocional en un espacio <span className="text-accent italic">seguro para ti</span>
           </h1>
           <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-            Acompañamiento psicológico profesional que te ayuda a comprender lo que sientes, ordenar lo que piensas y transformar lo que haces, desde una escucha profunda, empática y sin juicios.
+            Conecta pensamientos, emociones y conductas. Ayuda a entender cómo tus ideas influyen en tus sentimientos y acciones.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <motion.button 

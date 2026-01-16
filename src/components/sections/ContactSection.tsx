@@ -19,7 +19,7 @@ export default function ContactSection() {
       "Terapia para Adultos",
       "Grupos de contención para mujeres",
       "Grupo de Reflexión para Hombres",
-      "Área de Capacitación",
+      "Área de atención a la comunidad",
     ],
     []
   );

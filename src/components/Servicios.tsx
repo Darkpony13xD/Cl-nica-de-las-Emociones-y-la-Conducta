@@ -244,7 +244,7 @@ const SERVICIOS: Servicio[] = [
   },
   {
     id: "comunidad",
-    title: "Área de Capacitación",
+    title: "Área de atención a la comunidad",
     tag: "Pláticas y Talleres",
     desc:
       (

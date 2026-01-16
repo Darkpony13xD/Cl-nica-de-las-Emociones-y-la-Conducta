@@ -1,4 +1,4 @@
-import { Calendar, Clock, ShieldCheck, Sparkles, X } from "lucide-react";
+import { Calendar, Clock, ShieldCheck, Sparkles } from "lucide-react";
 
 import Modal from "../ui/Modal";
 import React from "react";
@@ -19,7 +19,35 @@ const SERVICIOS: Servicio[] = [
     title: "Terapia de Lenguaje",
     tag: "Infantil (3-11 años)",
     desc:
-      "Dirigidos a niños y niñas de 3 hasta los 11 años. Tiene como objetivo la rehabilitación de las alteraciones o dificultades del Lenguaje.",
+      (
+        <div className="space-y-8 text-base">
+          <div className="relative overflow-hidden rounded-3xl bg-purple-50/50 p-6 md:p-8 border border-purple-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-purple-600">
+                <span className="text-2xl">🗣️</span>
+              </div>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Rehabilitación del Lenguaje</h5>
+                <p className="text-sm text-purple-600 font-medium mt-1">Infantil (3-11 años)</p>
+              </div>
+            </div>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Dirigidos a niños y niñas de 3 hasta los 11 años. Tiene como objetivo la rehabilitación de las alteraciones o dificultades del Lenguaje.
+            </p>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                Áreas de atención:
+              </p>
+              <ul className="grid gap-3 text-gray-600 text-sm">
+                {["Rehabilitación del lenguaje", "Dificultades del habla", "Atención personalizada", "Estimulación y desarrollo"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2"><span className="text-purple-400 mt-0.5">▪</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     bullets: ["Rehabilitación del lenguaje", "Dificultades del habla", "Atención personalizada"],
     image:
       "/logo_2.png",
@@ -29,7 +57,35 @@ const SERVICIOS: Servicio[] = [
     title: "Terapia infantojuvenil",
     tag: "Infantil y Adolescentes",
     desc:
-      "Terapia donde la niña o el niño tiene la posibilidad de expresar a través de juego su mundo interno, incluyendo sus miedos, preocupaciones y recursos. Es una técnica adecuada para niños que se les dificulta el hablar de una experiencia traumática.",
+      (
+        <div className="space-y-8 text-base">
+          <div className="relative overflow-hidden rounded-3xl bg-blue-50/50 p-6 md:p-8 border border-blue-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-blue-600">
+                <span className="text-2xl">🧸</span>
+              </div>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Terapia de Juego</h5>
+                <p className="text-sm text-blue-600 font-medium mt-1">Infantil y Adolescentes</p>
+              </div>
+            </div>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Terapia donde la niña o el niño tiene la posibilidad de expresar a través de juego su mundo interno, incluyendo sus miedos, preocupaciones y recursos.
+            </p>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                Enfoque:
+              </p>
+              <ul className="grid gap-3 text-gray-600 text-sm">
+                {["Expresión emocional", "Procesamiento de traumas", "Manejo de ansiedad", "Problemas de conducta"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▪</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     bullets: ["Manejo de ansiedad", "Problemas de conducta", "Regulación emocional"],
     image:
       "/logo_2.png",
@@ -39,7 +95,35 @@ const SERVICIOS: Servicio[] = [
     title: "Terapia para Adolescentes",
     tag: "Adolescentes",
     desc:
-      "Espacio para adolescentes donde trabajamos identidad, autoestima, manejo de emociones, relaciones sociales y familiares.",
+      (
+        <div className="space-y-8 text-base">
+          <div className="relative overflow-hidden rounded-3xl bg-purple-50/50 p-6 md:p-8 border border-purple-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-purple-600">
+                <span className="text-2xl">🎧</span>
+              </div>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Acompañamiento Adolescente</h5>
+                <p className="text-sm text-purple-600 font-medium mt-1">Identidad y Crecimiento</p>
+              </div>
+            </div>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Espacio para adolescentes donde trabajamos identidad, autoestima, manejo de emociones, relaciones sociales y familiares.
+            </p>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                Temas clave:
+              </p>
+              <ul className="grid gap-3 text-gray-600 text-sm">
+                {["Identidad y Autoestima", "Manejo emocional", "Relaciones sociales", "Dinámica familiar"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2"><span className="text-purple-400 mt-0.5">▪</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     bullets: ["Identidad y Autoestima", "Manejo emocional", "Relaciones sociales"],
     image:
       "/logo_2.png",
@@ -49,7 +133,35 @@ const SERVICIOS: Servicio[] = [
     title: "Terapia para Adultos",
     tag: "Adultos",
     desc:
-      "El objetivo de la terapia individual es promover la salud mental en un ambiente de confianza y autoconocimiento; desarrollando en el paciente habilidades y herramientas para afrontar problemáticas de la vida cotidiana.",
+      (
+        <div className="space-y-8 text-base">
+          <div className="relative overflow-hidden rounded-3xl bg-blue-50/50 p-6 md:p-8 border border-blue-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-blue-600">
+                <span className="text-2xl">🌱</span>
+              </div>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Psicoterapia Individual</h5>
+                <p className="text-sm text-blue-600 font-medium mt-1">Bienestar y Autoconocimiento</p>
+              </div>
+            </div>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              El objetivo es promover la salud mental en un ambiente de confianza. Desarrollando habilidades para afrontar problemáticas de la vida cotidiana.
+            </p>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                Abordaje:
+              </p>
+              <ul className="grid gap-3 text-gray-600 text-sm">
+                {["Ansiedad y Depresión", "Autoestima y Duelo", "Conflictos de pareja", "Gestión del estrés"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▪</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     bullets: ["Ansiedad y Depresión", "Autoestima y Duelo", "Conflictos de pareja"],
     image:
       "/logo_2.png",
@@ -59,7 +171,35 @@ const SERVICIOS: Servicio[] = [
     title: "Grupos de contención para mujeres",
     tag: "Mujeres",
     desc:
-      "Espacio seguro de escucha y apoyo mutuo entre mujeres, guiado por profesionales para compartir experiencias y fortalecer redes de apoyo.",
+      (
+        <div className="space-y-8 text-base">
+          <div className="relative overflow-hidden rounded-3xl bg-purple-50/50 p-6 md:p-8 border border-purple-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-purple-600">
+                <span className="text-2xl">🌸</span>
+              </div>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Círculo de Mujeres</h5>
+                <p className="text-sm text-purple-600 font-medium mt-1">Sororidad y Apoyo</p>
+              </div>
+            </div>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Espacio seguro de escucha y apoyo mutuo entre mujeres, guiado por profesionales para compartir experiencias y fortalecer redes.
+            </p>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                Beneficios:
+              </p>
+              <ul className="grid gap-3 text-gray-600 text-sm">
+                {["Espacio seguro y confidencial", "Red de apoyo", "Crecimiento compartido", "Empoderamiento"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2"><span className="text-purple-400 mt-0.5">▪</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     bullets: ["Espacio seguro", "Red de apoyo", "Crecimiento compartido"],
     image:
       "/logo_2.png",
@@ -69,7 +209,35 @@ const SERVICIOS: Servicio[] = [
     title: "Grupo de Reflexión para Hombres",
     tag: "Adultos (+21 años)",
     desc:
-      "Dirigido a hombres a partir de los 21 años. Tiene como objetivo transformar de forma más sana las relaciones personales, cambiar las creencias limitantes y mejorar la autoestima. Es un espacio seguro, profesional y confidencial.",
+      (
+        <div className="space-y-8 text-base">
+          <div className="relative overflow-hidden rounded-3xl bg-blue-50/50 p-6 md:p-8 border border-blue-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-blue-600">
+                <span className="text-2xl">🛡️</span>
+              </div>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Círculo de Reflexión</h5>
+                <p className="text-sm text-blue-600 font-medium mt-1">Masculinidades y Vínculos</p>
+              </div>
+            </div>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Dirigido a hombres a partir de los 21 años. Objetivo: transformar relaciones, cambiar creencias limitantes y mejorar la autoestima.
+            </p>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                Objetivos:
+              </p>
+              <ul className="grid gap-3 text-gray-600 text-sm">
+                {["Relaciones sanas", "Creencias limitantes", "Autoestima", "Nuevas masculinidades"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▪</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     bullets: ["Relaciones sanas", "Creencias limitantes", "Espacio seguro"],
     image:
       "/logo_2.png",
@@ -81,55 +249,83 @@ const SERVICIOS: Servicio[] = [
     desc:
       (
         <div className="space-y-8 text-base">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-purple-100 rounded-lg text-purple-600">
-                🗣️
+          {/* Pláticas */}
+          <div className="relative overflow-hidden rounded-3xl bg-purple-50/50 p-6 md:p-8 border border-purple-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-purple-600">
+                <span className="text-2xl">🗣️</span>
               </div>
-              <h5 className="font-bold text-gray-900 text-xl">Pláticas psicoeducativas</h5>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Pláticas Psicoeducativas</h5>
+                <p className="text-sm text-purple-600 font-medium mt-1">
+                  Sensibilización y bienestar
+                </p>
+              </div>
             </div>
             
-            <p className="mb-4 leading-relaxed text-gray-600">
+            <p className="mb-6 leading-relaxed text-gray-600">
               Diseñadas para contextos escolares y centros comunitarios. Su finalidad es sensibilizar en temas de bienestar emocional.
-              <br />
-              <span className="text-sm font-medium text-purple-600 mt-2 block">
+              <span className="block mt-3 text-sm text-gray-500 bg-white/60 p-3 rounded-xl border border-purple-100">
                 ⏱️ Duración: 1-2 horas | 📍 Modalidad: Presencial o Virtual
               </span>
             </p>
-
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-              <p className="font-bold text-gray-800 mb-4">Algunos de los temas:</p>
-              <ul className="grid gap-3 text-gray-600">
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Prevención de conductas de riesgo</li>
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Educación emocional y Crianza positiva</li>
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Habilidades socioemocionales y de autocuidado</li>
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Prevención de abuso sexual en la niñez</li>
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Prevención de violencia familiar y maltrato infantil</li>
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Abordaje psicológico en casos de Bullying</li>
-                <li className="flex items-start gap-2"><span className="text-purple-500 mt-1">●</span> Inteligencia emocional para límites</li>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                Temas disponibles:
+              </p>
+              <ul className="grid md:grid-cols-2 gap-x-6 gap-y-3 text-gray-600 text-sm">
+                {[
+                  "Prevención de conductas de riesgo",
+                  "Educación emocional",
+                  "Crianza positiva",
+                  "Habilidades socioemocionales",
+                  "Prevención de abuso sexual",
+                  "Violencia familiar y maltrato",
+                  "Bullying y acoso escolar",
+                  "Límites e inteligencia emocional"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-purple-400 mt-0.5">▪</span>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
-
-          <div className="h-px bg-gray-100 w-full" />
-
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
-                ✨
+          {/* Talleres */}
+          <div className="relative overflow-hidden rounded-3xl bg-blue-50/50 p-6 md:p-8 border border-blue-100">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-white rounded-2xl shadow-sm text-blue-600">
+                <span className="text-2xl">✨</span>
               </div>
-              <h5 className="font-bold text-gray-900 text-xl">Talleres vivenciales</h5>
+              <div>
+                <h5 className="font-bold text-gray-900 text-xl">Talleres Vivenciales</h5>
+                <p className="text-sm text-blue-600 font-medium mt-1">
+                  Transformación profunda
+                </p>
+              </div>
             </div>
-            <p className="mb-4 leading-relaxed text-gray-600">
-              Sesiones de 1 a 2 encuentros diseñados para impactar profundamente en la forma de pensar y actuar, mejorando el bienestar.
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Experiencias inmersivas de 1 a 2 sesiones para generar cambios reales en la forma de pensar y actuar.
             </p>
-            <div className="bg-blue-50/50 rounded-2xl p-6 border border-blue-100">
-              <p className="font-bold text-gray-800 mb-4">Temas principales:</p>
-              <ul className="grid gap-3 text-gray-600">
-                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Autoestima positiva para mujeres</li>
-                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Dependencia emocional</li>
-                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Regulación emocional</li>
-                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Sanando la relación con mi madre</li>
+            <div>
+              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                Temas principales:
+              </p>
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
+                {[
+                  "Autoestima positiva (Mujeres)",
+                  "Dependencia emocional",
+                  "Regulación emocional",
+                  "Sanando la relación con mamá"
+                ].map((item, i) => (
+                  <li key={i} className="bg-white p-3 rounded-xl border border-blue-100 shadow-sm flex items-center gap-3">
+                    <span className="text-blue-500">✓</span>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -207,9 +403,9 @@ export default function Servicios() {
       >
         {selected && (
           <div className="flex flex-col gap-10">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            <div className="grid grid-cols-1 gap-8 lg:gap-12 items-start">
               {/* Imagen con overlay + marca */}
-              <div className="relative rounded-3xl overflow-hidden bg-gray-100 shadow-lg h-full min-h-[400px]">
+              <div className="relative rounded-3xl overflow-hidden bg-gray-100 shadow-lg h-64 md:h-80 w-full">
                 <img
                   src={selected.image}
                   alt={selected.title}
@@ -321,27 +517,18 @@ export default function Servicios() {
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                <div className="pt-2">
                   <a
                     href="#contacto"
                     onClick={() => setSelected(null)}
-                    className="inline-flex items-center justify-center rounded-2xl text-white font-bold px-6 py-4 shadow-lg hover:shadow-xl transition"
+                    className="w-full inline-flex items-center justify-center rounded-2xl text-white font-bold px-6 py-4 shadow-lg hover:shadow-xl transition hover:-translate-y-1"
                     style={{
                       background: "linear-gradient(90deg, #B508B0, #E05087, #53A2FE)",
                     }}
                   >
-                    <Calendar className="mr-2" size={18} />
+                    <Calendar className="mr-2" size={20} />
                     Agendar ahora
                   </a>
-
-                  <button
-                    type="button"
-                    onClick={() => setSelected(null)}
-                    className="inline-flex items-center justify-center rounded-2xl border border-gray-200 bg-white font-bold px-6 py-4 hover:bg-gray-50 transition"
-                  >
-                    <X className="mr-2" size={18} />
-                    Cerrar
-                  </button>
                 </div>
 
                 <p className="text-xs text-gray-500">

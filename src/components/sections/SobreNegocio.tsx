@@ -1,8 +1,11 @@
-import { Heart, Sparkles, Users } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Heart, Sparkles, Users, X } from "lucide-react";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function SobreNegocio() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const datos = [
     {
       icon: <Heart size={40} />,
@@ -31,11 +34,11 @@ export default function SobreNegocio() {
     },
   ];
 
-  const principios = [
-    { emoji: "🎯", t: "Objetivos Claros", d: "Trabajamos con metas definidas para lograr cambios observables y medibles.", bg: "bg-red-50" },
-    { emoji: "🧠", t: "Psicoeducación", d: "Te ayudamos a entender cómo funciona tu mente para que retomes el control.", bg: "bg-blue-50" },
-    { emoji: "🤝", t: "Trabajo Colaborativo", d: "Formamos un equipo contigo: tú eres el experto en tu vida, nosotros en el método.", bg: "bg-yellow-50" },
-    { emoji: "🌱", t: "Cambio Sostenible", d: "Buscamos que desarrolles habilidades que te sirvan para toda la vida.", bg: "bg-green-50" },
+  const galeria = [
+    "/1.jpeg",
+    "/2.jpeg",
+    "/3.jpeg",
+    "/4.jpeg",
   ];
 
   return (
@@ -103,8 +106,8 @@ export default function SobreNegocio() {
               </motion.div>
             </div>
 
-            {/* Columna Principios (Lateral) */}
-            <div className="lg:col-span-5 space-y-6">
+            {/* Columna Galería (Lateral) */}
+            <div className="lg:col-span-5">
               <motion.h4 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -113,26 +116,26 @@ export default function SobreNegocio() {
                 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3"
               >
                 <span className="w-8 h-1 bg-purple-500 rounded-full inline-block"></span>
-                Nuestros Principios
+                Un espacio para ti
               </motion.h4>
 
-              <div className="space-y-4">
-                {principios.map((p, i) => (
+              <div className="grid grid-cols-2 gap-4">
+                {galeria.map((img, i) => (
                   <motion.div
-                    key={p.t}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.15 }}
-                    className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all flex gap-4 items-start"
+                    transition={{ delay: i * 0.1 }}
+                    className="rounded-2xl overflow-hidden shadow-md h-40 border border-gray-100 cursor-pointer group relative"
+                    onClick={() => setSelectedImage(img)}
                   >
-                    <div className={`text-2xl shrink-0 ${p.bg} w-10 h-10 flex items-center justify-center rounded-lg`}>
-                      {p.emoji}
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-gray-900 text-sm">{p.t}</h5>
-                      <p className="text-gray-500 text-xs mt-1 leading-relaxed">{p.d}</p>
-                    </div>
+                    <img 
+                      src={img} 
+                      alt="Instalaciones Clínica" 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                   </motion.div>
                 ))}
               </div>
@@ -140,6 +143,35 @@ export default function SobreNegocio() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+            >
+              <X size={40} />
+            </button>
+            
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={selectedImage}
+              alt="Galería ampliada"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -410,6 +410,7 @@ export default function Servicios() {
                 <img
                   src={selected.image}
                   alt={selected.title}
+                  loading="lazy"
                   className="w-full h-full object-cover absolute inset-0"
                 />
 

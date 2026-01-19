@@ -151,6 +151,7 @@ export default function SobreNegocio() {
                     <img
                       src={galeria[currentIndex]}
                       alt="Instalaciones Clínica"
+                      loading="lazy"
                       className="w-full h-full object-cover rounded-2xl shadow-md border border-gray-100 cursor-pointer"
                       onClick={() => setSelectedImage(galeria[currentIndex])}
                     />
@@ -195,6 +196,7 @@ export default function SobreNegocio() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               src={selectedImage}
+              loading="lazy"
               alt="Galería ampliada"
               className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}

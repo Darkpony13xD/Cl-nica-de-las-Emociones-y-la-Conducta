@@ -88,7 +88,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Manejo de ansiedad", "Problemas de conducta", "Regulación emocional"],
     image:
-      "/servicios/juvenil.jpeg",
+      "/servicios/juvenil.png",
   },
   {
     id: "adolescentes",

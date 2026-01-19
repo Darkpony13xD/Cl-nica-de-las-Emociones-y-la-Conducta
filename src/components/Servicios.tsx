@@ -50,7 +50,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Rehabilitación del lenguaje", "Dificultades del habla", "Atención personalizada"],
     image:
-      "/1.jpeg",
+      "/servicios/lengua.png",
   },
   {
     id: "infantil",
@@ -88,7 +88,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Manejo de ansiedad", "Problemas de conducta", "Regulación emocional"],
     image:
-      "/2.jpeg",
+      "/servicios/juvenil.jpeg",
   },
   {
     id: "adolescentes",
@@ -126,7 +126,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Identidad y Autoestima", "Manejo emocional", "Relaciones sociales"],
     image:
-      "/5.jpeg",
+      "/servicios/terapia_adolescentes.jpeg",
   },
   {
     id: "adultos",
@@ -164,7 +164,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Ansiedad y Depresión", "Autoestima y Duelo", "Conflictos de pareja"],
     image:
-      "/3.jpeg",
+      "/servicios/terapia_adultos.jpeg",
   },
   {
     id: "mujeres",
@@ -202,7 +202,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Espacio seguro", "Red de apoyo", "Crecimiento compartido"],
     image:
-      "/6.png",
+      "/servicios/grupo_mujeres.jpeg",
   },
   {
     id: "hombres",
@@ -240,7 +240,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Relaciones sanas", "Creencias limitantes", "Espacio seguro"],
     image:
-      "/7.jpg",
+      "/servicios/grupo_hombres.jpeg",
   },
   {
     id: "comunidad",
@@ -333,7 +333,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Talleres preventivos", "Salud comunitaria", "Bienestar social"],
     image:
-      "/4.jpeg",
+      "/servicios/atencion.jpeg",
   },
 ];
 

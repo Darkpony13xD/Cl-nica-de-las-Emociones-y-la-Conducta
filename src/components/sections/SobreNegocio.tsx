@@ -1,10 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Heart, Sparkles, Users, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Sparkles, Users, X } from "lucide-react";
 
 import { useState } from "react";
 
 export default function SobreNegocio() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const datos = [
     {
@@ -35,11 +36,29 @@ export default function SobreNegocio() {
   ];
 
   const galeria = [
-    "/1.jpeg",
-    "/2.jpeg",
-    "/3.jpeg",
-    "/4.jpeg",
+    "/galeria/1.jpeg",
+    "/galeria/2.png",
+    "/galeria/3.png",
+    "/galeria/4.png",
+    "/galeria/5.png",
+    "/galeria/6.png",
+    "/galeria/7.jpeg",  
+    "/galeria/8.jpeg",
+    "/galeria/9.jpeg",
+    "/galeria/10.jpeg",
+    "/galeria/11.jpeg",
+    "/galeria/12.jpeg",
+    "/galeria/13.jpeg",
+    "/galeria/14.jpeg",
   ];
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % galeria.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + galeria.length) % galeria.length);
+  };
 
   return (
     <section
@@ -82,7 +101,7 @@ export default function SobreNegocio() {
 
           <div className="mt-12 lg:mt-16 grid lg:grid-cols-12 gap-12 items-start">
             {/* Columna Historia (Más ancha) */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -107,8 +126,8 @@ export default function SobreNegocio() {
             </div>
 
             {/* Columna Galería (Lateral) */}
-            <div className="lg:col-span-5">
-              <motion.h4 
+            <div className="lg:col-span-6">
+              <motion.h4
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -119,25 +138,36 @@ export default function SobreNegocio() {
                 Un espacio para ti
               </motion.h4>
 
-              <div className="grid grid-cols-2 gap-4">
-                {galeria.map((img, i) => (
+              <div className="relative h-[500px]">
+                <AnimatePresence initial={false}>
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="rounded-2xl overflow-hidden shadow-md h-40 border border-gray-100 cursor-pointer group relative"
-                    onClick={() => setSelectedImage(img)}
+                    key={currentIndex}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 w-full h-full"
                   >
-                    <img 
-                      src={img} 
-                      alt="Instalaciones Clínica" 
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" 
+                    <img
+                      src={galeria[currentIndex]}
+                      alt="Instalaciones Clínica"
+                      className="w-full h-full object-cover rounded-2xl shadow-md border border-gray-100 cursor-pointer"
+                      onClick={() => setSelectedImage(galeria[currentIndex])}
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                   </motion.div>
-                ))}
+                </AnimatePresence>
+                <button
+                  onClick={handlePrev}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-gray-900 rounded-full p-2 transition-colors"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-gray-900 rounded-full p-2 transition-colors"
+                >
+                  <ChevronRight size={24} />
+                </button>
               </div>
             </div>
           </div>
@@ -159,7 +189,7 @@ export default function SobreNegocio() {
             >
               <X size={40} />
             </button>
-            
+
             <motion.img
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

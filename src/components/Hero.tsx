@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-height-screen flex items-center pt-28 md:pt-20 overflow-hidden bg-serene min-h-[90vh]">
+    <section className="relative min-height-screen flex items-center pt-36 md:pt-20 overflow-hidden bg-serene min-h-[90vh]">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

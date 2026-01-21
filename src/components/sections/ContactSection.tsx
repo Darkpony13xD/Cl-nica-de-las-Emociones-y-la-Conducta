@@ -89,7 +89,7 @@ ${form.mensaje}`;
                   </div>
                   <div className="min-w-0">
                     <p className="text-sm text-white/60">Email</p>
-                    <p className="font-medium break-all">ServiciospsicologicosMA@gmail.com</p>
+                    <p className="font-medium break-all">serviciospsicologicosma@gmail.com</p>
                   </div>
                 </div>
 

@@ -5,7 +5,7 @@ import Hero from "./components/Hero";
 import Servicios from "./components/Servicios";
 
 import Enfoque from "./components/sections/Enfoque";
-import SobreNegocio from "./components/sections/SobreNegocio";
+import SobreNosotros from "./components/sections/SobreNosotros";
 import ContactSection from "./components/sections/ContactSection";
 
 import ScrollProgress from "./ui/ScrollProgress";
@@ -23,7 +23,7 @@ export default function App() {
         <Hero />
         <Enfoque />
         <Servicios />
-        <SobreNegocio />
+        <SobreNosotros />
         <ContactSection />
       </main>
       <Footer />

@@ -17,7 +17,7 @@ const SERVICIOS: Servicio[] = [
   {
     id: "lenguaje",
     title: "Terapia de Lenguaje",
-    tag: "Infantil (3-11 años)",
+    tag: "niñas y niños de 3 a 10 años",
     desc:
       (
         <div className="space-y-8 text-base">
@@ -27,35 +27,38 @@ const SERVICIOS: Servicio[] = [
                 <span className="text-2xl">🗣️</span>
               </div>
               <div>
-                <h5 className="font-bold text-gray-900 text-xl">Rehabilitación del Lenguaje</h5>
-                <p className="text-sm text-purple-600 font-medium mt-1">Infantil (3-11 años)</p>
+                <h5 className="font-bold text-gray-900 text-xl">Terapia de Lenguaje</h5>
+                <p className="text-sm text-purple-600 font-medium mt-1">Niñas y niños de 3 a 10 años</p>
               </div>
             </div>
             <p className="mb-6 leading-relaxed text-gray-600">
-              Dirigidos a niños y niñas de 3 hasta los 11 años. Tiene como objetivo la rehabilitación de las alteraciones o dificultades del Lenguaje.
+              La terapia de lenguaje ayuda a mejorar el habla, el lenguaje y la comunicación de los niños y niñas. Y prevenir complicaciones futuras en el aprendizaje, la socialización y el bienestar emocional.
+            </p>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Recuerda que el lenguaje es una de las habilidades más importantes que los niños y niñas adquieren durante sus primeros años de vida, por lo que una atención temprana es esencial para su desarrollo pleno.
             </p>
             <div>
               <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                Áreas de atención:
+                La terapia de lenguaje puede ayudar a su hijo en las siguientes áreas:
               </p>
-              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
-                {["Rehabilitación del lenguaje", "Dificultades del habla", "Atención personalizada", "Estimulación y desarrollo"].map((item, i) => (
-                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3"><span className="text-purple-500">▪</span>{item}</li>
+              <ul className="grid md:grid-cols-1 gap-4 text-gray-600 text-sm">
+                {["Estimulación del lenguaje desde etapas preverbales hasta la adquisición del lenguaje.", "Atención a niños y niñas con retraso en el habla y en el desarrollo del lenguaje.", "Problemas de articulación y pronunciación del habla."].map((item, i) => (
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3"><span className="text-purple-500"></span>{item}</li>
                 ))}
               </ul>
             </div>
           </div>
         </div>
       ),
-    bullets: ["Rehabilitación del lenguaje", "Dificultades del habla", "Atención personalizada"],
+    bullets: ["Estimulación del lenguaje", "Retraso en el habla", "Problemas de articulación"],
     image:
       "/servicios/lengua.png",
   },
   {
     id: "infantil",
     title: "Terapia infantojuvenil",
-    tag: "Infantil y Adolescentes",
+    tag: "de 5 a 18 años",
     desc:
       (
         <div className="space-y-8 text-base">
@@ -65,68 +68,30 @@ const SERVICIOS: Servicio[] = [
                 <span className="text-2xl">🧸</span>
               </div>
               <div>
-                <h5 className="font-bold text-gray-900 text-xl">Terapia de Juego</h5>
-                <p className="text-sm text-blue-600 font-medium mt-1">Infantil y Adolescentes</p>
+                <h5 className="font-bold text-gray-900 text-xl">Terapia infantojuvenil</h5>
+                <p className="text-sm text-blue-600 font-medium mt-1">de 5 a 18 años</p>
               </div>
             </div>
             <p className="mb-6 leading-relaxed text-gray-600">
-              Terapia donde la niña o el niño tiene la posibilidad de expresar a través de juego su mundo interno, incluyendo sus miedos, preocupaciones y recursos.
+              La terapia infantojuvenil es un proceso terapéutico diseñado para ayudar a niños y adolescentes a superar desafíos emocionales, conductuales y sociales.
             </p>
             <div>
               <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                Enfoque:
+                Algunos de los beneficios de la terapia infantojuvenil incluyen:
               </p>
-              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
-                {["Expresión emocional", "Procesamiento de traumas", "Manejo de ansiedad", "Problemas de conducta"].map((item, i) => (
-                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3"><span className="text-blue-500">▪</span>{item}</li>
+              <ul className="grid md:grid-cols-1 gap-4 text-gray-600 text-sm">
+                {["- Mejora en la autoestima y la confianza", "- Desarrollo de habilidades sociales y emocionales", "- Manejo del estrés y la ansiedad", "- Resolución de conflictos y problemas", "- Fortalecimiento de las relaciones familiares"].map((item, i) => (
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3">{item}</li>
                 ))}
               </ul>
             </div>
           </div>
         </div>
       ),
-    bullets: ["Manejo de ansiedad", "Problemas de conducta", "Regulación emocional"],
+    bullets: ["Autoestima y confianza", "Habilidades sociales", "Manejo del estrés"],
     image:
       "/servicios/juvenil.png",
-  },
-  {
-    id: "adolescentes",
-    title: "Terapia para Adolescentes",
-    tag: "Adolescentes",
-    desc:
-      (
-        <div className="space-y-8 text-base">
-          <div className="relative overflow-hidden rounded-3xl bg-purple-50/50 p-6 md:p-8 border border-purple-100">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 bg-white rounded-2xl shadow-sm text-purple-600">
-                <span className="text-2xl">🎧</span>
-              </div>
-              <div>
-                <h5 className="font-bold text-gray-900 text-xl">Acompañamiento Adolescente</h5>
-                <p className="text-sm text-purple-600 font-medium mt-1">Identidad y Crecimiento</p>
-              </div>
-            </div>
-            <p className="mb-6 leading-relaxed text-gray-600">
-              Espacio para adolescentes donde trabajamos identidad, autoestima, manejo de emociones, relaciones sociales y familiares.
-            </p>
-            <div>
-              <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                Temas clave:
-              </p>
-              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
-                {["Identidad y Autoestima", "Manejo emocional", "Relaciones sociales", "Dinámica familiar"].map((item, i) => (
-                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-purple-100/50 flex items-center gap-3"><span className="text-purple-500">▪</span>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      ),
-    bullets: ["Identidad y Autoestima", "Manejo emocional", "Relaciones sociales"],
-    image:
-      "/servicios/terapia_adolescentes.jpeg",
   },
   {
     id: "adultos",
@@ -207,7 +172,7 @@ const SERVICIOS: Servicio[] = [
   {
     id: "hombres",
     title: "Grupo de Reflexión para Hombres",
-    tag: "Adultos (+21 años)",
+    tag: "hombres de +21 años",
     desc:
       (
         <div className="space-y-8 text-base">
@@ -217,28 +182,31 @@ const SERVICIOS: Servicio[] = [
                 <span className="text-2xl">🛡️</span>
               </div>
               <div>
-                <h5 className="font-bold text-gray-900 text-xl">Círculo de Reflexión</h5>
-                <p className="text-sm text-blue-600 font-medium mt-1">Masculinidades y Vínculos</p>
+                <h5 className="font-bold text-gray-900 text-xl">Grupo de reflexión para hombres</h5>
+                <p className="text-sm text-blue-600 font-medium mt-1">Hombres de +21 años</p>
               </div>
             </div>
             <p className="mb-6 leading-relaxed text-gray-600">
-              Dirigido a hombres a partir de los 21 años. Objetivo: transformar relaciones, cambiar creencias limitantes y mejorar la autoestima.
+              Te invitamos a asistir al grupo exclusivo para hombres. Te invitamos a un espacio seguro, confidencial y profesional, comprometido a mejorar el bienestar emocional de los hombres. El objetivo es transformar de forma más sana nuestras sus relaciones personales.
+            </p>
+            <p className="mb-6 leading-relaxed text-gray-600">
+              Es un grupo abierto, en el momento que decidas podrás integrarte, en cada sesión conectarás, fortalecerás y repensaras sobre aquellas áreas de tu vida que se encuentren en conflicto. ¡Asiste a una sesión y cambia tu enfoque!
             </p>
             <div>
               <p className="font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                Objetivos:
+                Temáticas:
               </p>
-              <ul className="grid md:grid-cols-2 gap-4 text-gray-600 text-sm">
-                {["Relaciones sanas", "Creencias limitantes", "Autoestima", "Nuevas masculinidades"].map((item, i) => (
-                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3"><span className="text-blue-500">▪</span>{item}</li>
+              <ul className="grid md:grid-cols-1 gap-4 text-gray-600 text-sm">
+                {["Conflictos en la pareja", "separación", "celos", "paternidad", "familia", "hijos", "economía", "gestión de los estados de ánimo y conflictos", "entrenamiento en habilidades de afrontamiento, etc."].map((item, i) => (
+                  <li key={i} className="bg-white/60 p-3 rounded-xl border border-blue-100/50 flex items-center gap-3">{item}</li>
                 ))}
               </ul>
             </div>
           </div>
         </div>
       ),
-    bullets: ["Relaciones sanas", "Creencias limitantes", "Espacio seguro"],
+    bullets: ["Conflictos en la pareja", "Paternidad", "Gestión de los estados de ánimo"],
     image:
       "/servicios/grupo_hombres.jpeg",
   },
@@ -473,7 +441,7 @@ export default function Servicios() {
                     }}
                   >
                     <span className="text-base">💗</span>
-                    Enfoque humano
+                    Enfoque en el aquí y el ahora
                   </span>
                 </div>
 

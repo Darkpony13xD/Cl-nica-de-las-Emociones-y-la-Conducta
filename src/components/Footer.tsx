@@ -39,10 +39,10 @@ const Footer: React.FC = () => {
               <p>
                 📧{" "}
                 <a
-                  href="mailto:ServiciospsicologicosMA@gmail.com"
+                  href="mailto:serviciospsicologicosma@gmail.com"
                   className="hover:text-blue-500 transition-colors"
                 >
-                  ServiciospsicologicosMA@gmail.com
+                  serviciospsicologicosma@gmail.com
                 </a>
               </p>
               <p>📍 Av. Veracruz Norte #2 esq Jalisco, Villa Milpa Alta.</p>

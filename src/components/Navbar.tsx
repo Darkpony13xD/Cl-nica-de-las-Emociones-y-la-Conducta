@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
     { name: 'Inicio', href: '#' },
     { name: 'Enfoque', href: '#enfoque' },
     { name: 'Servicios', href: '#servicios' },
-    { name: 'Sobre el Negocio', href: '#sobre-negocio' },
+    { name: 'Sobre Nosotros', href: '#sobre-nosotros' },
     { name: 'Contacto', href: '#contacto' },
   ];
 

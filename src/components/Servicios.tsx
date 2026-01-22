@@ -91,7 +91,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Autoestima y confianza", "Habilidades sociales", "Manejo del estrés"],
     image:
-      "/servicios/juvenil.png",
+      "/servicios/juvenil.jpeg",
   },
   {
     id: "adultos",

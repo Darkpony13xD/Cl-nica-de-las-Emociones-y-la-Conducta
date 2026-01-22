@@ -53,7 +53,7 @@ const SERVICIOS: Servicio[] = [
       ),
     bullets: ["Estimulación del lenguaje", "Retraso en el habla", "Problemas de articulación"],
     image:
-      "/servicios/lengua.png",
+      "/servicios/lengua.jpeg",
   },
   {
     id: "infantil",

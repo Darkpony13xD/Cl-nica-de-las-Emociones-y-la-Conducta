@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   // ✅ Pon aquí tus links reales
   const SOCIAL_LINKS = {
     facebook: "https://www.facebook.com/profile.php?id=100067239251887",
-    instagram: "https://www.instagram.com/emociones5976262",
+    instagram: "https://www.instagram.com/cliecma/",
   };
 
   return (

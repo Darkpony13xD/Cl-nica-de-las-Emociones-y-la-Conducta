@@ -7,7 +7,7 @@ export default function ContactSection() {
   const WHATSAPP_NUMBER = "525512270630";
 
   // ✅ Cambia tus links aquí
-  const INSTAGRAM_URL = "https://www.instagram.com/emociones5976262 ";
+  const INSTAGRAM_URL = "https://www.instagram.com/cliecma/ ";
   const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=100067239251887";
 
   const motives = useMemo(
